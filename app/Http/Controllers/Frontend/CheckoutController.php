@@ -3,17 +3,20 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\UploadPhotos;
 use Illuminate\Http\Request;
-use App\Models\Facture;
 use App\Models\Invoices;
 use App\Models\Order;
 use App\Models\Orders;
 use App\Models\Products;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Traits;
 
 class CheckoutController extends Controller
 {
+    use UploadPhotos;
+
     public function index()
     {
         $old_Cartsitems = Orders::where('id_user', Auth::id())->get();
@@ -45,8 +48,11 @@ class CheckoutController extends Controller
             'city'      => 'required|max:255'  ,
             'state'     => 'required|max:255'  ,
             'country'   => 'required|max:255'  ,
+            'image'     => 'required|max:255'  ,
             'pincode'   => 'required|max:255'  ,
         ]);
+
+        $file_name = $this->savePhotos($request->image , 'assets/uploads/ccp/') ;
 
         $order = new Order();
         $order->id_user     = Auth::id();
@@ -60,7 +66,8 @@ class CheckoutController extends Controller
         $order->country     = $request->input('country');
         $order->state       = $request->input('state');
         $order->pincode     = $request->input('pincode');
-        $order->status      = $request->input('status') == TRUE ? '1' : '0';
+        $order->status      = '0';
+        $order->image       = $file_name;
         $order->price_total = $request->input('price_total');
         $order->tracking_no = 'techshop '.rand(1111,9999);
         $order->save();

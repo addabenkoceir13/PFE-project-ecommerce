@@ -28,13 +28,20 @@ class Products extends Model
         'small_descripton',
     ];
 
+
     public function category()
     {
         return $this->belongsTo(category::class, 'id_cate', 'id');
     }
+
     public function fournisseur()
     {
         return $this->belongsTo(Suppliers::class, 'id_supp', 'id');
+    }
+
+    public function notationr()
+    {
+        return $this->hasMany(Notation::class, 'id', 'id_prod');
     }
 }
 

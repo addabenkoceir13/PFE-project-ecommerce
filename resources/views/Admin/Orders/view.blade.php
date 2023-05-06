@@ -46,6 +46,9 @@
                             <input  class="form-control" value="{{ $orders->pincode }}" disabled>
                         </div>
                         <hr class="my-4">
+                        <div class="text-center">
+                            <img class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" src="{{ asset('assets/uploads/ccp/'. $orders->image)}}" width="620px" alt="{{ $orders->image}}">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -106,4 +109,24 @@
         </div>
     </div>
 </section>
+<!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+    <div class="modal modal-dialog modal-xl" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Image:  {{$orders->image}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('assets/uploads/ccp/'. $orders->image)}}" width="100%" alt=" $orders->image">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
 @endsection

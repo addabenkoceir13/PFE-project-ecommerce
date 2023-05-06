@@ -17,8 +17,14 @@ class Notation extends Model
         'stars_rated',
 
     ];
+
     public function rating()
     {
         return $this->belongsTo(products::class, 'id_prod', 'id');
+    }
+
+    public function productr()
+    {
+        return $this->belongsTo(Products::class, 'id_prod', 'id');
     }
 }

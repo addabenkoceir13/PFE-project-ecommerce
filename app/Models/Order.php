@@ -25,6 +25,7 @@ class Order extends Model
         'state',
         'pincode',
         'status',
+        'image',
         'message',
         'tracking_no',
 

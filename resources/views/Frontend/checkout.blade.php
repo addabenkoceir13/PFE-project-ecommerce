@@ -101,11 +101,31 @@
                                             @enderror
                                         </div>
                                         <hr class="my-4">
+                                        <div class="col-md-12">
+                                            <div style="border-left: 5px solid red; " class="alert alert-secondary   ">
+                                                <b>Note:</b>
+                                                To secure your products, please pay 20% of the total transaction price.
+                                                Thank you very much for putting your faith in us. You are always welcome in our store.
+                                            </div>
+                                                <div class="image-upload-wrap">
+                                                    <input type="file" name="image" class="form-contro file-upload-inputl @error('image') is-invalid @enderror" onchange="readURL(this);" accept="image/*" placeholder="Please Choose">
+                                                    @error('image')
+                                                    <div class="invalid-feedback fs-5">Please Enter your photo receipt of the operation.</div>
+                                                @enderror
+                                                </div>
+                                                <div class="file-upload-content">
+                                                    <img class="file-upload-image" width="600px" height="300px" src="#" alt="your image" />
+                                                    <div class="image-title-wrap">
+                                                        <button type="button" onclick="removeUpload()" class="btn btn-outline-danger  remove-image mt-3">Remove <span class="image-title">Uploaded Image</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <hr class="my-4">
+                                {{-- <hr class="my-4"> --}}
                             </div>
-                        </div>
+
                         <div class="col-lg-4 bg-grey" style="background-color: #eae8e8;">
                             <div class="p-5">
                                 <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
@@ -153,8 +173,7 @@
                                 </div>
                                 <hr class="my-4">
                                 <div class="d-grid gap-2">
-                                    <button type="submit" class="btn btn-dark btn-block btn-lg "  >Register | COD</button>
-                                    <button type="button" class="btn btn-dark btn-block btn-lg razorpay_btn"  >Pay With Razorpay</button>
+                                    <button type="submit" class="btn btn-dark btn-block btn-lg "  >Register | CCP </button>
                                 </div>
                             </div>
                         </div>
@@ -169,5 +188,38 @@
 @endsection
 
 @section('scripts')
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    function readURL(input) {
+    if (input.files && input.files[0]) {
+
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+        $('.image-upload-wrap').hide();
+
+        $('.file-upload-image').attr('src', e.target.result);
+        $('.file-upload-content').show();
+
+        $('.image-title').html(input.files[0].name);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+
+    } else {
+        removeUpload();
+    }
+    }
+
+    function removeUpload() {
+    $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+    $('.file-upload-content').hide();
+    $('.image-upload-wrap').show();
+    }
+    $('.image-upload-wrap').bind('dragover', function () {
+        $('.image-upload-wrap').addClass('image-dropping');
+    });
+    $('.image-upload-wrap').bind('dragleave', function () {
+        $('.image-upload-wrap').removeClass('image-dropping');
+    });
+</script>
 @endsection

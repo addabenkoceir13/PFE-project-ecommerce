@@ -21,10 +21,12 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Order Date</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Tracking Number</th>
+                        <th scope="col">Order Date</th>
                         <th scope="col">Total Price</th>
                         <th scope="col">Status  </th>
+                        <th scope="col">Pay  </th>
                         <th scope="col">Action  </th>
                     </tr>
                 </thead>
@@ -32,10 +34,12 @@
                     @foreach ($orders as $item)
                         <tr>
                             <td scope="row">{{ $item->id}}</td>
-                            <td>{{ $item->created_at}}</td>
+                            <td>{{ $item->fname .' '. $item->lname}}</td>
                             <td>{{ $item->tracking_no}}</td>
+                            <td>{{ $item->created_at->format('d M Y')}}</td>
                             <td>{{ $item->price_total}}</td>
                             <td>{{ $item->status == '0' ? 'Pending' : 'Completed'}}</td>
+                            <td> <img src="{{ asset('assets/uploads/ccp/'. $item->image)}}" width="120px" alt="{{ $item->image}}"></td>
                             <td>
                                 <a href="{{ url('admin/view-order/'.$item->id)}}" type="button" class="btn btn-outline-success mb-1">View</a>
                             </td>
