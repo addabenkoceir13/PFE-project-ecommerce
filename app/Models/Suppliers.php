@@ -18,5 +18,7 @@ class Suppliers extends Model
         'fax',
         'address',
         'description',
+        'let',
+        'lng',
     ];
 }

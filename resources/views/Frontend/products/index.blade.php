@@ -7,8 +7,8 @@
 <div class="py-3 my-4 shadow-sm borfer-top bg-secondary p-2 text-dark bg-opacity-25">
     <div class="container">
         <h5 class="mb-0">
-            <a href="{{ url('categorys')}}"> Collections /</a>
-            <a href="{{ url('view-category/'.$category->name_cate)}}">  {{ $category->name_cate }}</a>
+            <a  class="link-light" href="{{ url('categorys')}}"> Collections /</a>
+            <a  class="link-light" href="{{ url('view-category/'.$category->name_cate)}}">  {{ $category->name_cate }}</a>
         </h5>
     </div>
 </div>

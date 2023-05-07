@@ -22,192 +22,95 @@
         </div>
     </div>
     {{-- Start show products phones --}}
-    <h2>Featured Product Phones </h2>
+    <h2>Featured Product Phones  </h2>
     <p class="text-center">
         Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
     </p>
-    <section style="background-color: #eee;">
-        <div class="container py-5">
-            <div class="row">
-                <div class="owl-carousel owl-theme">
-                    @foreach ($featured_products_phone as $prod)
-                    <div class="item">
-                        <a href="{{ url('view-category/'. $prod->category->name_cate) }}">
-                            <div class="card h-100">
-                                <div class="d-flex justify-content-between p-3">
-                                    <p class="lead mb-0 text-dark ">Today's Combo Offer</p>
-                                    <div
-                                        class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                                        style="width: 35px; height: 35px;">
-                                        <p class="text-white mb-0 small">New</p>
-                                    </div>
-                                </div>
-                                <img src="{{ asset('assets/uploads/products/'.$prod->image) }}" height="280px" class="card-img-top" alt="Laptop" />
-                                <div class="card-body">
-                                    @if ($prod->selling_price)
-                                        <div class="d-flex justify-content-between">
-                                            <p class="small float-start"><a href="#!" class="float-start text-muted">{{ $prod->category->name_cate }} </a></p>
-                                            <p class="small text-danger float-end"><s>{{ $prod->original_price }}</s></p>
-                                        </div>
-                                        <div class="d-flex justify-content-between mb-3">
-                                            <h5 class="mb-0">{{ $prod->name_prod }}</h5>
-                                            <h5 class="text-dark mb-0">{{ $prod->selling_price }}</h5>
-                                        </div>
-                                    @else
-                                        <div class="d-flex justify-content-between">
-                                            <p class="small"><a href="#!" class="text-muted">{{ $prod->category->name_cate }}</a></p>
-                                            <p class="small text-danger"><s></s></p>
-                                        </div>
-                                        <div class="d-flex justify-content-between mb-3">
-                                            <h5 class="mb-0">{{ $prod->name_prod }}</h5>
-                                            <h5 class="text-dark mb-0">{{ $prod->original_price }}</h5>
-                                        </div>
-                                    @endif
-                                    <div class="d-flex justify-content-between">
-                                        @php
-                                            $ratings = App\Models\Notation::where('id_prod',$prod->id)->get();
-                                            $rating_sum = App\Models\Notation::where('id_prod',$prod->id)->sum('stars_rated');
-                                            $user_rating   = App\Models\Notation::where('id_prod',$prod->id)->first();
-
-                                            $reviews = App\Models\Review::where('id_prod',$prod->id)->count();
-
-                                            if ($ratings->count() > 0)
-                                            {
-                                                $rating_value = $rating_sum/$ratings->count();
-                                            }
-                                            else
-                                            {
-                                                $rating_value = 0;
-                                            }
-                                            $ratenum = number_format( $rating_value )
-                                        @endphp
-                                        <p>
-                                            @for ($i = 1; $i <= $ratenum ; $i++)
-                                                <i class="fa fa-star text-warning"></i>
-                                            @endfor
-                                            @for ($j = $ratenum+1; $j <= 5; $j++)
-                                                <i class="bi bi-star text-secondary"></i>
-                                            @endfor
-                                            @if ($ratings->count() > 0)
-                                                <span class="list-inline-item text-dark">{{ $ratings->count() }} Rating  </span>
-                                            @else
-                                                <span class="list-inline-item text-dark"> No Rating   </span>
-                                            @endif
-                                        </p>
-                                        <p class="text-muted">
-                                            Reviews ( {{$reviews}} )
-                                        </p>
-                                    </div>
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <p class="text-muted mb-0">Available: <span class="fw-bold">{{ $prod->qte_stock }}</span></p>
-
-                                    </div>
-                                </div>
-                            </div>
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row">
+            @foreach ($top_products as $product_id => $rating)
+                @php
+                    $products = App\Models\Products::where('id', $product_id)->get();
+                @endphp
+                @foreach ($products as $prod)
+                <div class="col-md-12 col-lg-4 mb-4 mb-lg-3">
+                    <div class="card h-100 ">
+                    <a href="{{ url('category/'.$prod->category->name_cate.'/'.$prod->name_prod)}}">
+                    <div class="d-flex justify-content-between p-3">
+                        <p class="lead mb-0">Today's Combo Offer</p>
+                        <div class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong" style="width: 35px; height: 35px;">
+                            {{-- <p class="text-white mb-0 small">x4</p> --}}
                         </div>
-                        </a>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- End show products phones --}}
-
-    {{-- Start show products Computeurs --}}
-    <h2>Featured Computeurs </h2>
-    <section style="background-color: #eee;">
-        <div class="container py-5">
-            <div class="row">
-                <div class="owl-carousel owl-theme">
-                    @foreach ($featured_products_compt as $prod)
-                    <div class="item ">
-                        <a href="{{ url('view-category/'. $prod->category->name_cate) }}">
-                            <div class="card h-100">
-                                <div class="d-flex justify-content-between p-3">
-                                    <p class="lead mb-0 text-dark">Today's Combo Offer</p>
-                                    <div
-                                        class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                                        style="width: 35px; height: 35px;">
-                                        <p class="text-white mb-0 small">New</p>
-                                    </div>
-                                </div>
-                                <img src="{{asset('assets/uploads/products/'.$prod->image)}}" height="280px" class="card-img-top" alt="Laptop" />
-                                <div class="card-body">
-                                    @if ($prod->selling_price)
-                                        <div class="d-flex justify-content-between">
-                                            <p class="small float-start"><a href="#!" class="text-muted">{{ $prod->category->name_cate }} </a></p>
-                                            <p class="small text-danger"><s>{{ $prod->original_price }}</s></p>
-                                        </div>
-                                        <div class="d-flex justify-content-between mb-3">
-                                            <h5 class="mb-0">{{ $prod->name_prod}}</h5>
-                                            <h5 class="text-dark mb-0">{{ $prod->selling_price}}</h5>
-                                        </div>
-                                    @else
-                                        <div class="d-flex justify-content-between">
-                                            <p class="small float-start"><a href="#!" class="text-muted">{{ $prod->category->name_cate }} </a></p>
-                                            <p class="small text-danger"><s>{{ $prod->original_price }}</s></p>
-                                        </div>
-                                        <div class="d-flex justify-content-between mb-3">
-                                            <h5 class="mb-0">{{ $prod->name_prod}}</h5>
-                                            <h5 class="text-dark mb-0">{{ $prod->original_price}}</h5>
-                                        </div>
-                                    @endif
-                                    <div class="d-flex justify-content-between">
-                                        @php
-                                            $ratings = App\Models\Notation::where('id_prod',$prod->id)->get();
-                                            $rating_sum = App\Models\Notation::where('id_prod',$prod->id)->sum('stars_rated');
-                                            $user_rating   = App\Models\Notation::where('id_prod',$prod->id)->first();
-
-                                            $reviews = App\Models\Review::where('id_prod',$prod->id)->count();
-
-                                            if ($ratings->count() > 0)
-                                            {
-                                                $rating_value = $rating_sum/$ratings->count();
-                                            }
-                                            else
-                                            {
-                                                $rating_value = 0;
-                                            }
-                                            $ratenum = number_format( $rating_value )
-                                        @endphp
-                                        <p>
-                                            @for ($i = 1; $i <= $ratenum ; $i++)
-                                                <i class="fa fa-star text-warning"></i>
-                                            @endfor
-                                            @for ($j = $ratenum+1; $j <= 5; $j++)
-                                                <i class="bi bi-star text-secondary"></i>
-                                            @endfor
-                                            @if ($ratings->count() > 0)
-                                                <span class="list-inline-item text-dark">{{ $ratings->count() }} Rating</span>
-                                            @else
-                                                <span class="list-inline-item text-dark">No Rating  </span>
-                                            @endif
-                                        </p>
-                                        <p class="text-muted">
-                                            Reviews ( {{$reviews}} )
-                                        </p>
-                                    </div>
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <p class="text-muted mb-0">Available: <span class="fw-bold">{{ $prod->qte_stock}}</span></p>
-                                        <div class="ms-auto text-warning">
-                                            {{-- <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half"></i>
-                                            <i class="bi bi-star"></i> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
                     </div>
-                    @endforeach
+                        <img src="{{asset('assets/uploads/products/'.$prod->image)}}" height="250px" class="card-img-top" alt="Laptop" />
+                    <div class="card-body">
+                        @if ($prod->selling_price)
+                            <div class="d-flex justify-content-between">
+                                <p class="small float-start"><a href="#!" class="text-muted">{{ $prod->category->name_cate }} </a></p>
+                                <p class="small text-danger"><s>{{ $prod->original_price }}</s></p>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">{{ $prod->name_prod}}</h5>
+                                <h5 class="text-dark mb-0">{{ $prod->selling_price}}</h5>
+                            </div>
+                        @else
+                            <div class="d-flex justify-content-between">
+                                <p class="small float-start"><a href="#!" class="text-muted">{{ $prod->category->name_cate }} </a></p>
+                                <p class="small text-danger"><s>{{ $prod->original_price }}</s></p>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">{{ $prod->name_prod}}</h5>
+                                <h5 class="text-dark mb-0">{{ $prod->original_price}}</h5>
+                            </div>
+                        @endif
+                        <div class="d-flex justify-content-between">
+                            <p>
+                                @for ($i = 1; $i <= $rating ; $i++)
+                                    <i class="fa fa-star text-warning"></i>
+                                @endfor
+                                @for ($j = $rating+1; $j <= 5; $j++)
+                                    <i class="bi bi-star text-secondary"></i>
+                                @endfor
+                                @if ($rating > 0)
+                                    @php
+                                        $rating1 = sprintf("%.2f", $rating);
+                                    @endphp
+                                    <span class="list-inline-item text-dark">{{ $rating1 }} Rating </span>
+                                @else
+                                    <span class="list-inline-item text-dark">No Rating  </span>
+                                @endif
+                            </p>
+                            @php
+                                $reviews = App\Models\Review::where('id_prod',$prod->id)->count();
+                            @endphp
+                            <p class="text-muted">
+                                Reviews ( {{$reviews}} )
+                            </p>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5 class="mb-0"></h5>
+                            <h5 class="text-dark mb-0"></h5>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <p class="text-muted mb-0">Available: <span class="fw-bold">{{ $prod->qte_stock}}</span></p>
+
+                        </div>
+                    </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
+
+                @endforeach
+            @endforeach
         </div>
-    </section>
-    {{-- End show products Computeurs --}}
+    </div>
+</section>
+
+
+
 
 
 @endsection
@@ -233,3 +136,200 @@
 </script>
 
 @endsection
+
+
+{{-- <section>
+    <div class="container">
+        @foreach ($top_products as $product_id => $rating)
+            @php
+                $products = App\Models\Products::where('id', $product_id)->get();
+            @endphp
+        <div>
+            <h3>Product ID: {{ $product_id }}</h3>
+            <p>Average rating: {{ $rating }}</p>
+        </div>
+        @endforeach
+    </div>
+</section> --}}
+ {{-- Start show products Computeurs --}}
+{{-- <h2>Featured Computeurs </h2>
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row">
+            <div class="owl-carousel owl-theme">
+                @foreach ($featured_products_compt as $prod)
+                <div class="item ">
+                    <a href="{{ url('view-category/'. $prod->category->name_cate) }}">
+                        <div class="card h-100">
+                            <div class="d-flex justify-content-between p-3">
+                                <p class="lead mb-0 text-dark">Today's Combo Offer</p>
+                                <div
+                                    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                                    style="width: 35px; height: 35px;">
+                                    <p class="text-white mb-0 small">New</p>
+                                </div>
+                            </div>
+                            <img src="{{asset('assets/uploads/products/'.$prod->image)}}" height="280px" class="card-img-top" alt="Laptop" />
+                            <div class="card-body">
+                                @if ($prod->selling_price)
+                                    <div class="d-flex justify-content-between">
+                                        <p class="small float-start"><a href="#!" class="text-muted">{{ $prod->category->name_cate }} </a></p>
+                                        <p class="small text-danger"><s>{{ $prod->original_price }}</s></p>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5 class="mb-0">{{ $prod->name_prod}}</h5>
+                                        <h5 class="text-dark mb-0">{{ $prod->selling_price}}</h5>
+                                    </div>
+                                @else
+                                    <div class="d-flex justify-content-between">
+                                        <p class="small float-start"><a href="#!" class="text-muted">{{ $prod->category->name_cate }} </a></p>
+                                        <p class="small text-danger"><s>{{ $prod->original_price }}</s></p>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5 class="mb-0">{{ $prod->name_prod}}</h5>
+                                        <h5 class="text-dark mb-0">{{ $prod->original_price}}</h5>
+                                    </div>
+                                @endif
+                                <div class="d-flex justify-content-between">
+                                    @php
+                                        $ratings = App\Models\Notation::where('id_prod',$prod->id)->get();
+                                        $rating_sum = App\Models\Notation::where('id_prod',$prod->id)->sum('stars_rated');
+                                        $user_rating   = App\Models\Notation::where('id_prod',$prod->id)->first();
+
+                                        $reviews = App\Models\Review::where('id_prod',$prod->id)->count();
+
+                                        if ($ratings->count() > 0)
+                                        {
+                                            $rating_value = $rating_sum/$ratings->count();
+                                        }
+                                        else
+                                        {
+                                            $rating_value = 0;
+                                        }
+                                        $ratenum = number_format( $rating_value )
+                                    @endphp
+                                    <p>
+                                        @for ($i = 1; $i <= $ratenum ; $i++)
+                                            <i class="fa fa-star text-warning"></i>
+                                        @endfor
+                                        @for ($j = $ratenum+1; $j <= 5; $j++)
+                                            <i class="bi bi-star text-secondary"></i>
+                                        @endfor
+                                        @if ($ratings->count() > 0)
+                                            <span class="list-inline-item text-dark">{{ $ratings->count() }} Rating</span>
+                                        @else
+                                            <span class="list-inline-item text-dark">No Rating  </span>
+                                        @endif
+                                    </p>
+                                    <p class="text-muted">
+                                        Reviews ( {{$reviews}} )
+                                    </p>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <p class="text-muted mb-0">Available: <span class="fw-bold">{{ $prod->qte_stock}}</span></p>
+                                    <div class="ms-auto text-warning">
+                                        {{-- <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half"></i>
+                                        <i class="bi bi-star"></i> --
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section> --}}
+{{-- End show products Computeurs --}}
+
+{{-- <section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row">
+            <div class="owl-carousel owl-theme">
+                @foreach ($featured_products_phone as $prod)
+                <div class="item">
+                    <a href="{{ url('view-category/'. $prod->category->name_cate) }}">
+                        <div class="card h-100">
+                            <div class="d-flex justify-content-between p-3">
+                                <p class="lead mb-0 text-dark ">Today's Combo Offer</p>
+                                <div
+                                    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                                    style="width: 35px; height: 35px;">
+                                    <p class="text-white mb-0 small">New</p>
+                                </div>
+                            </div>
+                            <img src="{{ asset('assets/uploads/products/'.$prod->image) }}" height="280px" class="card-img-top" alt="Laptop" />
+                            <div class="card-body">
+                                @if ($prod->selling_price)
+                                    <div class="d-flex justify-content-between">
+                                        <p class="small float-start"><a href="#!" class="float-start text-muted">{{ $prod->category->name_cate }} </a></p>
+                                        <p class="small text-danger float-end"><s>{{ $prod->original_price }}</s></p>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5 class="mb-0">{{ $prod->name_prod }}</h5>
+                                        <h5 class="text-dark mb-0">{{ $prod->selling_price }}</h5>
+                                    </div>
+                                @else
+                                    <div class="d-flex justify-content-between">
+                                        <p class="small"><a href="#!" class="text-muted">{{ $prod->category->name_cate }}</a></p>
+                                        <p class="small text-danger"><s></s></p>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5 class="mb-0">{{ $prod->name_prod }}</h5>
+                                        <h5 class="text-dark mb-0">{{ $prod->original_price }}</h5>
+                                    </div>
+                                @endif
+                                <div class="d-flex justify-content-between">
+                                    @php
+                                        $ratings = App\Models\Notation::where('id_prod',$prod->id)->get();
+                                        $rating_sum = App\Models\Notation::where('id_prod',$prod->id)->sum('stars_rated');
+                                        $user_rating   = App\Models\Notation::where('id_prod',$prod->id)->first();
+
+                                        $reviews = App\Models\Review::where('id_prod',$prod->id)->count();
+
+                                        if ($ratings->count() > 0)
+                                        {
+                                            $rating_value = $rating_sum/$ratings->count();
+                                        }
+                                        else
+                                        {
+                                            $rating_value = 0;
+                                        }
+                                        $ratenum = number_format( $rating_value )
+                                    @endphp
+                                    <p>
+                                        @for ($i = 1; $i <= $ratenum ; $i++)
+                                            <i class="fa fa-star text-warning"></i>
+                                        @endfor
+                                        @for ($j = $ratenum+1; $j <= 5; $j++)
+                                            <i class="bi bi-star text-secondary"></i>
+                                        @endfor
+                                        @if ($ratings->count() > 0)
+                                            <span class="list-inline-item text-dark">{{ $ratings->count() }} Rating  </span>
+                                        @else
+                                            <span class="list-inline-item text-dark"> No Rating   </span>
+                                        @endif
+                                    </p>
+                                    <p class="text-muted">
+                                        Reviews ( {{$reviews}} )
+                                    </p>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <p class="text-muted mb-0">Available: <span class="fw-bold">{{ $prod->qte_stock }}</span></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section> --}}
+{{-- End show products phones --}}

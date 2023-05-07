@@ -10,6 +10,7 @@ use App\Models\Products;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FrontConteroller extends Controller
 {
@@ -18,7 +19,40 @@ class FrontConteroller extends Controller
         $featured_products_phone = Products::where('id_cate','1')->get();
         $featured_products_compt = Products::where('id_cate','2')->get();
 
-        return view('Frontend.index', compact('featured_products_phone', 'featured_products_compt'));
+        $users = Notation::all();
+        $user_ids = DB::table('notations')->distinct()->pluck('id_user')->toArray();
+
+        $user_id =0; // ID of the user to get recommendations for
+        foreach ($user_ids as $user_id) {
+            // Retrieve all ratings for the given user
+            $ratings = Notation::where('id_user', $user_id)->get();
+
+            // Get the IDs of all products that the user has rated
+            $rated_products = $ratings->pluck('id_prod')->toArray();
+
+            // Retrieve all ratings for products that the user has not rated
+            $other_ratings = Notation::whereNotIn('id_prod', $rated_products)->get();
+
+            // Group the ratings by product ID
+            $grouped_ratings = $other_ratings->groupBy('id_prod');
+
+            // Calculate the average rating for each product
+            $product_ratings = [];
+            foreach ($grouped_ratings as $product_id => $ratings) {
+                $avg_rating = $ratings->avg('stars_rated');
+                if ($avg_rating >= 3) {
+                    $product_ratings[$product_id] = $avg_rating ;
+                }
+
+            }
+
+            // Sort the products by their average rating, in descending order
+            arsort($product_ratings);
+
+            // Get the top 10 products
+            $top_products = array_slice($product_ratings, 0, 9, true);
+        }
+        return view('Frontend.index',['top_products' => $top_products], compact('featured_products_phone', 'featured_products_compt'));
     }
 
     public function category()

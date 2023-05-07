@@ -59,8 +59,6 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require": {
-        "mahout/mahout": "0.13.0"
-    }
+    "prefer-stable": true
+
 }

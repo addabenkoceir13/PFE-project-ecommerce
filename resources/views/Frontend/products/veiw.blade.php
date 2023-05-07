@@ -181,7 +181,10 @@
                     <h3 class="mb-4">How students rated this courses</h3>
                     <div class="row align-items-center">
                     <div class="col-auto text-center">
-                        <h3 class="display-2 fw-bold">{{$rating_value}}</h3>
+                        @php
+                            $rating_value1 = sprintf("%.2f", $rating_value);
+                        @endphp
+                        <h3 class="display-2 fw-bold">{{$rating_value1}}</h3>
                         <i class="fa fa-star me-n1 text-warning"></i>
                         <i class="fa fa-star me-n1 text-warning"></i>
                         <i class="fa fa-star me-n1 text-warning"></i>

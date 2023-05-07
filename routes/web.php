@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\FrontConteroller;
 use App\Http\Controllers\Frontend\CommandeController;
 use App\Http\Controller\Frontend\CkeckoutController;
 use App\Http\Controllers\Admin\FrontController;
+use App\Http\Controllers\Admin\MapController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\SuppliersController;
 use App\Http\Controllers\Admin\UsersController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistContrller;
 use App\Http\Controllers\Frontend\RatingController;
+use App\Http\Controllers\Frontend\RecommendationController;
 use App\Http\Controllers\Frontend\ReviewContoller;
 
 /*
@@ -63,6 +65,8 @@ Route::post('add-to-wishlist', [WishlistContrller::class,'AddWish']);
 Route::post('delete-wishlist-item', [WishlistContrller::class, 'deletedwish']);
 //
 Route::get('load-wishlist-count', [WishlistContrller::class, 'wishlistcount']);
+
+Route::get('recommndation', [RecommendationController::class , 'extractFeatures']);
 
 
 Route::middleware(['auth'])->group(function(){
@@ -158,6 +162,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     Route::get('users', [UsersController::class, 'users']);
     //
     Route::get('view-user/{id}', [UsersController::class, 'viewuser']);
+
+    // Router For map
+    Route::get('map', [MapController::class, 'index']);
 
 
 
