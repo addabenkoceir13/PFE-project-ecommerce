@@ -20,6 +20,12 @@
                     </select>
                 </div>
                 <div class="col-md-4">
+                    <label class="form-label">Choose a Suppliers </label>
+                    <select class="form-select @error('id_supp') is-invalid @enderror" name="id_supp" value="{{ old('id_supp') }}">
+                        <option  selected disabled>{{ $products->supplier->fname .' '.$products->supplier->lname}}</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
                     <label class="form-label">Name</label>
                     <input type="text" class="form-control @error('name_prod') is-invalid @enderror"  name="name_prod" placeholder="Name" value="{{$products->name_prod, old('name_cate') }}" required>
                     @error('name_prod')
@@ -48,13 +54,6 @@
                     @enderror
                 </div>
                 <div class="col-md-4">
-                    <label class="form-label">Tax</label>
-                    <input type="number" class="form-control @error('tax') is-invalid @enderror"  name="tax" placeholder="15%" value="{{$products->tax, old('tax') }}" required>
-                    @error('tax')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="col-md-4">
                     <label class="form-label">Quantity </label>
                     <input type="number" class="form-control @error('qte_stock') is-invalid @enderror"  name="qte_stock" placeholder="156" value="{{$products->qte_stock, old('qte_stock') }}" required>
                     @error('qte_stock')
@@ -75,19 +74,93 @@
                         <label class="form-check-label mt-1" for="flexSwitchCheckDefault"> Status</label>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <label class="form-label">Stockages</label>
-                    <input type="text" class="form-control @error('stockage') is-invalid @enderror"  name="stockage" placeholder="64, 128, 256, 512" value="{{ old('stockage') }}" required>
-                    @error('stockage')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                <div class="col-md-6">
+                    <label class="form-label">Stocrages</label><br>
+                    <div class="form-check form-check-inline">
+                        <input  type="checkbox" name="storages[]"  value="64 GB" id="ids1">
+                        <label style="cursor: pointer;" class="form-check-label" for="ids1" >64 GB</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input  type="checkbox" name="storages[]"  value="128 GB" id="ids2">
+                        <label style="cursor: pointer;" class="form-check-label" for="ids2" >128 GB</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input  type="checkbox" name="storages[]"  value="256 GB" id="ids3" >
+                        <label style="cursor: pointer;" class="form-check-label" for="ids3" >256 GB</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input  type="checkbox" name="storages[]"  value="512 GB" id="ids4">
+                        <label style="cursor: pointer;" class="form-check-label" for="ids4" >512 GB</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input  type="checkbox" name="storages[]"  value="1 TB" id="ids5">
+                        <label style="cursor: pointer;" class="form-check-label" for="ids5" >1 TB</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input  type="checkbox" name="storages[]"  value="2 TB" id="ids6" >
+                        <label style="cursor: pointer;" class="form-check-label" for="ids6" >2 TB</label>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <label class="form-label">Colors</label>
-                    <input type="text" class="form-control @error('color') is-invalid @enderror"  name="color" placeholder="white, black" value="{{ old('stockage') }}" required>
-                    @error('color')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+
+                <div class="col-md-6">
+                    <label class="form-label">Colors</label><br>
+                    <div class="form-check1 form-check-inline " >
+                        <input type="checkbox" name="colors[]"  value="#000"  id="invalidCheck1">
+                        <label class=" d-block" style="background: #000; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck1"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="#fff" id="invalidCheck2">
+                        <label class=" d-block" style="background: #fff; width: 32px; height: 32px; border: 1px solid #333; border-radius: 50%; cursor: pointer;" for="invalidCheck2"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="#5e5566" id="invalidCheck3" >
+                        <label class=" d-block" style="background: #5e5566; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck3"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="#fb1230" id="invalidCheck4">
+                        <label class=" d-block" style="background: #fb1230; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck4"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="#d4c9b1" id="invalidCheck5">
+                        <label class=" d-block" style="background: #d4c9b1; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck5"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="#e2e4e1" id="invalidCheck6" >
+                        <label class=" d-block" style="background: #e2e4e1; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck6"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="#4b4845" id="invalidCheck7" >
+                        <label class=" d-block" style="background: #4b4845; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck7"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="#faf7f2" id="invalidCheck8" >
+                        <label class=" d-block" style="background: #faf7f2; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck8"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="#e5ddea" id="invalidCheck9" >
+                        <label class=" d-block" style="background: #e5ddea; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck9"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="#a9bacc" id="invalidCheck10" >
+                        <label class=" d-block" style="background: #a9bacc; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck10"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="#343b43" id="invalidCheck11" >
+                        <label class=" d-block" style="background: #343b43; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck11"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="#FFFF00" id="invalidCheck12" >
+                        <label class=" d-block" style="background: #FFFF00; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck12"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="" id="invalidCheck" >
+                        <label class=" d-block" style="background: #; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="" id="invalidCheck" >
+                        <label class=" d-block" style="background: #; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck"></label>
+                    </div>
+
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Small Description</label>

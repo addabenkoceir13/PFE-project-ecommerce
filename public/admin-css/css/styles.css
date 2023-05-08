@@ -82,8 +82,77 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
+
+.form-check input[type="checkbox"]
+{
+    -webkit-appearance: none;
+    appearance: none;
+}
+.form-check label
+{
+    position: relative;
+}
+.form-check label::before
+{
+    content: '';
+    width: 20px;
+    height: 20px;
+   /* background-color: #ddd; */
+    display: inline-block;
+    position: relative;
+    top: 5px;
+   /* border: 1px solid #ccc; */
+}
+
+.form-check input[type="checkbox"]:checked + label::after
+{
+    font-family: "FontAwesome";
+    content: '\f00c';
+    color: #4BB543;
+    position: absolute;
+    left: -8px;
+    top: -5px;
+    right: 15px;
+    font-size: 30px;
+    font-weight: 100;
+}
+
+.form-check1 input[type="checkbox"]
+{
+    -webkit-appearance: none;
+    appearance: none;
+}
+.form-check1 label
+{
+    position: relative;
+}
+.form-check1 label::before
+{
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+
+}
+
+.form-check1 input[type="checkbox"]:checked + label::after
+{
+    font-family: "FontAwesome";
+    content: '\f00c';
+    color: #4BB543;
+    position: absolute;
+    left: 2px;
+    top: -5px;
+    right: 15px;
+    font-size: 30px;
+    font-weight: 100;
+
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   :root {
