@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="{{ asset('sweetalert/sweetalert2.min.css') }}" integrity="sha256-sWZjHQiY9fvheUAOoxrszw9Wphl3zqfVaz1kZKEvot8=" crossorigin="anonymous">
 
     {{-- Map --}}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha384-zTUFTWPfN4Dp0J0dX9e4q3xg2Q0Tnvhd/NNM1S7usE+zDEeWVnROwoXz1YuORnP" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha384-qYiycZhJZM1WV7vFELIOQhV7dC5EtWfOoCv5jpYXpV5zrd8WZ7V5vOtmu2Upw30d" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
 
     {{-- Title Page --}}

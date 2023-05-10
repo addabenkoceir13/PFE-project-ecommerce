@@ -41,6 +41,7 @@ Auth::routes();
 
 // Router for Frontend
 Route::get('/', [FrontConteroller::class , 'index']);
+Route::get('/home', [FrontConteroller::class , 'index'])->name('home');
 
 Route::get('categorys' , [FrontConteroller::class, 'category']);
 

@@ -20,5 +20,6 @@ class Suppliers extends Model
         'description',
         'let',
         'lng',
+        'rating',
     ];
 }
