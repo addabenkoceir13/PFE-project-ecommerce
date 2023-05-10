@@ -47,7 +47,8 @@
             marker.bindPopup(popupContent);
 
             // Helper function to generate rating stars
-            function generateRatingStars(rating) {
+            function generateRatingStars(rating)
+            {
                 var starsHtml = '';
                 for (var i = 0; i < 5; i++) {
                     if (i < Math.floor(rating))
@@ -65,7 +66,6 @@
                 }
                 return '<span class="rating-stars">' + starsHtml + '</span>';
             }
-
         }
 
     </script>

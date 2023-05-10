@@ -20,6 +20,7 @@ class Suppliers extends Model
         'description',
         'let',
         'lng',
+        'name',
         'rating',
     ];
 }
