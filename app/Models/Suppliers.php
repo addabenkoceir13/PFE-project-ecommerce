@@ -15,12 +15,12 @@ class Suppliers extends Model
         'lname',
         'email',
         'phone',
-        'fax',
+        'image',
         'address',
         'description',
         'let',
         'lng',
-        'name',
+        'location',
         'rating',
     ];
 }

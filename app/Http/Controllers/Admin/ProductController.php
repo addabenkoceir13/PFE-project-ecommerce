@@ -25,7 +25,8 @@ class ProductController extends Controller
     }
 
     // This function Router for page added products
-    public function addprod(){
+    public function addprod()
+    {
         $category = Category::all();
         $suppliers = Suppliers::all();
         return view('Admin.products.addProd', compact('category', 'suppliers'));
@@ -132,24 +133,22 @@ class ProductController extends Controller
         // $partproducts->update();
 
         return redirect('products')->with("status","Products update Successfully");
-        }
-
-        // This function Router for Deleted category
-        public function dropProd(Request $request,$id)
-        {
-            $products = Products::find($id);
-            if ($products->image) {
-                $path = 'assets/uploads/products/'.$products->image;
-                if(File::exists($path))
-                {
-                    File::delete($path);
-                }
-            }
-            $products->delete();
-            return redirect('products')->with("status","Products Deleted Successfully");
     }
 
-
+        // This function Router for Deleted category
+    public function dropProd(Request $request,$id)
+    {
+        $products = Products::find($id);
+        if ($products->image) {
+            $path = 'assets/uploads/products/'.$products->image;
+            if(File::exists($path))
+            {
+                File::delete($path);
+            }
+        }
+        $products->delete();
+        return redirect('products')->with("status","Products Deleted Successfully");
+    }
 
 }
 

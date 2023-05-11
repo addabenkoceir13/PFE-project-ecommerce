@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="col-ms-12 col-md-6 col-xl-6 d-flex jestify-content-center align-items-center">
-            <img class="w-100" src="https://drive.google.com/file/d/1KyuhrWLFJ5DELeCekQ9LN1Swwl6OEY_p/view?usp=sharing"  alt="">
+            <img class="w-100" src="{{ asset('assets/Frontend/home/mockrocket-export.gif')}}"  alt="">
         </div>
     </div>
     {{-- Start show products phones --}}

@@ -104,10 +104,6 @@ Route::middleware(['auth'])->group(function(){
     //
     Route::get('view-order/{id}', [UserController::class, 'vieworder']);
 
-
-
-
-
 });
 
 
@@ -129,11 +125,6 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     Route::put('update-category/{id}' , [CategoryController::class , 'update']);
     // Router for deleted category
     Route::get('deleted-category/{id}' , [CategoryController::class , 'dropCate']);
-
-    // Router For Suppliers
-    Route::get('suppliers', [SuppliersController::class, 'index']);
-    //
-    Route::post('insert-supplier' , [SuppliersController::class, 'insert']);
 
     // Router for Products
     Route::get('products', [ProductController::class, 'index']);
@@ -163,6 +154,13 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     Route::get('users', [UsersController::class, 'users']);
     //
     Route::get('view-user/{id}', [UsersController::class, 'viewuser']);
+
+    // Router For Suppliers
+    Route::get('suppliers', [SuppliersController::class, 'index']);
+    //
+    Route::post('insert-supplier' , [SuppliersController::class, 'insert']);
+    //
+    Route::delete('remove-supplier/{id}', [SuppliersController::class, 'removesupp'])->name('supplier.deleted');
 
     // Router For map
     Route::get('map', [MapController::class, 'index']);
