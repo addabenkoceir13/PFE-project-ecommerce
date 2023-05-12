@@ -35,4 +35,11 @@ class OrdersController extends Controller
         $orders = Order::where('status', '1')->get();
         return view('admin.orders.histort',compact('orders'));
     }
+
+    public function ordersCount()
+    {
+        $orders = Order::where('status', '0')->count();
+        return response()->json(['count' => $orders]);
+
+    }
 }

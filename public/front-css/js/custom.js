@@ -161,7 +161,7 @@ $(document).ready(function() {
 
     // Delleted Wishlist
     // $('.remove-wishlist-item').click(function (e) {
-        $(document).on('click','.remove-wishlist-item',function(e) {
+    $(document).on('click','.remove-wishlist-item',function(e) {
         e.preventDefault();
 
         var id_product = $(this).closest('.product_date').find('.id_product').val();

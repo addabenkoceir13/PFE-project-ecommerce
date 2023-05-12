@@ -3,9 +3,9 @@
 * Copyright 2013-2023 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
 */
-// 
+//
 // Scripts
-// 
+//
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -26,11 +26,37 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 const linkColor = document.querySelectorAll('.list-group-item ')
-    
+
 function colorLink(){
 if(linkColor){
 linkColor.forEach(l=> l.classList.remove('active'))
 this.classList.add('active')
 }
 }
-linkColor.forEach(l=> l.addEventListener('click', colorLink))
+linkColor.forEach(l=> l.addEventListener('click', colorLink));
+
+// Ajax javaScript for insart data page "Frontend/Products/view" to dataBase Frontend/Commende controller
+    $(document).ready(function()
+    {
+        loadOrders()
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        function loadOrders()
+        {
+            $.ajax({
+                method: "GET",
+                url: "/load-orders-count",
+                success: function(response)
+                {
+                    $('.order-count').html('');
+                    $('.order-count').html(response.count);
+                }
+            });
+        }
+
+    });

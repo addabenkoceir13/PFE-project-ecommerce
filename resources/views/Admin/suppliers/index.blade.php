@@ -154,7 +154,7 @@
                                     <span class="join">Joined {{ $item->created_at->format('d M Y')}}</span>
                                 </div>
                                 <div>
-                                    <a href="{{ url('view-suplier/'.$item->id)}}" type="button" class="btn btn-outline-success "><i class="bi bi-pencil-square"></i></a>
+                                    <a href="{{ url('view-suppliers/'.$item->id)}}" type="button" class="btn btn-outline-success "><i class="bi bi-pencil-square"></i></a>
                                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal{{ $item->id }}">
                                         <i class="bi bi-person-dash-fill"></i>
                                     </button>
@@ -243,74 +243,8 @@
         });
     });
 
-
-
-
-
-    $(document).on('click', '#removesupplier', function(e) {
-        e.preventDefault();
-
-        console.log('Cliked Btn Remove Experience')
-        var title = $(this).data('bs-item')
-
-        var item = $(this).closest('#card-supplier').data('item');
-        // $('#staticBackdrop1').find('#content-rmodal').val(item.degree_id);
-        // $('#staticBackdrop1').find('#specialty').val(item.specialty_id);
-        // $('#staticBackdrop1').find('#name').val(item.name);
-
-        console.log(item);
-        var fullname = item.fname + ' ' + item.lname;
-
-
-        $('#content-rmodal').empty()
-        $('#content-rmodal').append('<span>' + fullname  + '</span>');
-        $('#content-id').empty()
-        $('#content-id').append('<span>' + item.id  + '</span>');
-
-        var url = $(this).data('bs-url');
-        console.log(url);
-        $('#removeForm').attr('action', url);
-
-        $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    });
-
-
-
-    //
     </script>
 @endsection
 
-{{--
-<button type="button" class="btn btn-outline-danger" id="removesupplier" data-bs-item="delete-supp" data-target="#confirmDeleteModal{{ $item->id }}"
-    data-bs-url="{{ route('supplier.deleted', [ 'item'=>$item->id]) }}" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
-        <i class="bi bi-person-dash-fill"></i>
-    </button>
-    <!-- Modal -->
-    <div class="modal fade"  id="confirmDeleteModal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="" id="deletedsupplier" method="POST">
-                @csrf
-                @method('DELETE')
-                <div class="modal-header">
-                <h5 class="modal-title text-danger" id="exampleModalLabel">Remove supplier <span id="content-rmodal"></span></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h4>Are you sure to remove this supplier? <span id="content-id"></span> </h4>
-                    <input type="text"   id="id_supplier">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger ">Deleted</button>
-                </div>
-            </form>
-        </div>
-        </div>
-    </div>
-    End Modal --}}
+
 

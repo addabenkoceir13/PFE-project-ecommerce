@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\FrontConteroller;
 use App\Http\Controllers\Frontend\CommandeController;
 use App\Http\Controller\Frontend\CkeckoutController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\FrontController;
 use App\Http\Controllers\Admin\MapController;
 use App\Http\Controllers\Admin\OrdersController;
@@ -160,10 +161,24 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     //
     Route::post('insert-supplier' , [SuppliersController::class, 'insert']);
     //
-    Route::delete('remove-supplier/{id}', [SuppliersController::class, 'removesupp'])->name('supplier.deleted');
+    Route::delete('remove-supplier/{id}', [SuppliersController::class, 'removeSupp'])->name('supplier.deleted');
+    //
+    Route::get('view-suppliers/{id}', [SuppliersController::class, 'viewSupplier']);
+    //
+    Route::post('update-supplier/{id}', [SuppliersController::class, 'updateSupplier']);
 
-    // Router For map
+    // Router For map suppliers
     Route::get('map', [MapController::class, 'index']);
+
+    // Router Fordmin
+    Route::get('admin-profile', [AdminController::class, 'index']);
+    //
+    Route::post('edit-profile-admin', [AdminController::class, 'editProfileadmin']);
+    //
+
+    //
+    Route::get('load-orders-count', [OrdersController::class, 'ordersCount']);
+
 
 
 
