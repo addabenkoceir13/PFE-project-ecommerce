@@ -160,6 +160,12 @@ class ProductController extends Controller
         return redirect('products')->with("status","Products Deleted Successfully");
     }
 
+    public function searchProducts(Request $request)
+    {
+        $products = Products::where('name_prod', 'like', '%' . $request->input('query') . '%')->get();
+        return response()->json($products);
+    }
+
 }
 
 

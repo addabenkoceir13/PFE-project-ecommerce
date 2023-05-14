@@ -92,6 +92,13 @@ class SuppliersController extends Controller
         if ($suppliers_check)
         {
             $suppliers = Suppliers::find($id);
+            if ($suppliers->image) {
+                $path = 'assets/uploads/suppliers/'.$suppliers->image;
+                if(File::exists($path))
+                {
+                    File::delete($path);
+                }
+            }
             $suppliers->delete();
 
             return redirect()->back()->with("status" , " Suppliers Deleted Successfull ");

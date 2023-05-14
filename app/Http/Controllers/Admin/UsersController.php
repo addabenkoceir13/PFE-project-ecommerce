@@ -50,23 +50,10 @@ class UsersController extends Controller
 
     }
 
-    public function search(Request $request)
+    public function searchUsers(Request $request)
     {
         $users = User::where('name', 'like', '%' . $request->input('query') . '%')->get();
         return response()->json($users);
     }
 
-
-    // public function userslist()
-    // {
-    //     $users = User::select('name')->get();
-    //     $data = [];
-
-    //     foreach($users as $item)
-    //     {
-    //         $data[] = $item['name'];
-    //     }
-
-    //     return $data;
-    // }
 }

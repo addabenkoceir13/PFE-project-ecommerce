@@ -7,14 +7,26 @@
 @section('content')
     <div class="card border-0">
         <div class="header-body row">
-            <div class="col-md-10">
-                <h1>Products</h1>
+            <div class="d-flex justify-content-between">
+                <div >
+                    <h3 class="text-card">Products</h3>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <form action="">
+                        <div class="search">
+                            <input   type="search"  id="search_products" class="search-input" placeholder="Search products...">
+                            <a href="#" class="search-icon"> <i class="fa fa-search"></i> </a>
+                        </div>
+                    </form>
+                </div>
+                <div >
+                    <a href="{{ url('add-products') }}" class="btn btn-dark">Create A New </a>
+                </div>
             </div>
-            <div class="col-md-2">
-                <a href="{{ url('add-products') }}" class="btn btn-dark">Create A New </a>
-            </div>
+
         </div>
         <div class="card-body">
+
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -33,6 +45,8 @@
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
+                <tbody id="products-list">
+                </tbody>
                 <tbody>
                     @foreach ($products as $item)
                         <tr>

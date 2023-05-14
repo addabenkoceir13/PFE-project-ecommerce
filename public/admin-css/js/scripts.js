@@ -3,6 +3,8 @@
 * Copyright 2013-2023 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
 */
+
+
 //
 // Scripts
 //
@@ -109,25 +111,6 @@ $(document).ready(function()
     });
 
     // Search user in page Admin
-    // var availableTags = [];
-
-    // $.ajax({
-    //     method: "GET",
-    //     url: "/users-list",
-    //     success: function (response) {
-    //         console.log(response);
-    //         startAutoComplete(response);
-    //     }
-    // });
-
-    // function startAutoComplete(availableTags)
-    // {
-    //     $("#search_users").autocomplete({
-    //         source: availableTags
-    //     });
-    // }
-
-    //
     $('#search_users').on('keyup', function() {
         var query = $(this).val();
         $.ajax({
@@ -147,6 +130,47 @@ $(document).ready(function()
                     html += '</tr>';
                 });
                 $('#users-list').html(html);
+            }
+        });
+    });
+
+    // Search Products in page Admin
+    $('#search_products').on('keyup', function() {
+        var query = $(this).val();
+        $.ajax({
+            url: "products-list",
+            type: 'GET',
+            data: {
+                'query': query
+            },
+            success: function(data) {
+                var products = data;
+                console.log(products)
+                var html = '';
+                // color   = json_decode(product.colors);
+                // storage   = json_decode(product.storages);
+                $.each(products, function(index, product)
+                {
+                    var storage = JSON.parse(JSON.stringify(product.storages)); // Decoding JSON data
+                    var color = JSON.parse(JSON.stringify(product.colors)); // Decoding JSON data
+                    console.log(storage);
+                    html += '<tr>';
+                    html += '<td>' + product.id + '</td>';
+                    html += '<td> Cateory </td>';
+                    html += '<td> Suppliers </td>';
+                    html += '<td>' + product.name_prod + '</td>';
+                    html += '<td>' + product.mark_prod + '</td>';
+                    html += '<td>' + product.original_price + '</td>';
+                    html += '<td>' + product.selling_price + '</td>';
+                    html += '<td>' + product.qte_stock + '</td>';
+                    html += '<td>' + storage + '</td>';
+                    html += '<td>' + color + '</td>';
+                    html += '<td><img src="assets/uploads/products/'+product.image +'" width="200px" alt="'+ product.image +'"></td>';
+                    html += '<td><a href="edit-products/'+ product.id+ '" type="button" class="btn btn-outline-success mb-1"><i class="bi bi-pencil-square"></i></a>'+
+                            '<a href="deleted-products/'+ product.id+ '" type="button" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a></td>';
+                    html += '</tr>';
+                });
+                $('#products-list').html(html);
             }
         });
     });

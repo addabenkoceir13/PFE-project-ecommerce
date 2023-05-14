@@ -142,6 +142,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     Route::put('update-products/{id}', [ProductController::class, 'update']);
     // Router for deleted products
     Route::get('deleted-products/{id}', [ProductController::class, 'dropProd']);
+    //
+    Route::get('products-list', [ProductController::class, 'searchProducts']);
 
 
     // Router for Orders
@@ -159,7 +161,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     //
     Route::get('view-user/{id}', [UsersController::class, 'viewuser']);
     //
-    Route::get('users-list',[UsersController::class,  'search']);
+    Route::get('users-list',[UsersController::class,  'searchUsers']);
     //
     Route::post('deleted-user', [UsersController::class, 'deletedUser']);
 
