@@ -124,8 +124,26 @@
                             <li class="list-inline-item">
                                 <h6>Avaliable Color :</h6>
                             </li>
+                            @php
+                                $storage = json_decode($products->storages, true);
+                                $color   = json_decode($products->colors);
+                            @endphp
                             <li class="list-inline-item">
-                                <p class="text-muted"><strong>White / Black</strong></p>
+                                @foreach ($color as $item)
+                                    <div class="d-inline-block mx-1 border border-secondary" style=" width:25px; height: 20px; background: {{ $item }}; " ></div>
+                                @endforeach
+                                {{-- <p class="text-muted"><strong>{{ $colors }}</strong></p> --}}
+                            </li>
+                        </ul>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h6>Avaliable Stokage :</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                @foreach ($storage as $item)
+                                    <div class="d-inline-block mx-1  px-1" style="background: #eee; " >{{ $item }}</div>
+                                @endforeach
+                                {{-- <p class="text-muted"><strong>{{ $colors }}</strong></p> --}}
                             </li>
                         </ul>
                         <h6>Specification:</h6>
@@ -289,7 +307,7 @@
                         <!-- List Group Item -->
                         <li class="list-group-item px-0 py-4">
                             <div class="d-flex">
-                                @if ($item->users->image)
+                                @if ($item->users->image )
                                 <img src="{{asset('assets/Frontend/Users/'.$item->users->image)}}" alt="{{ $item->users->image }}" width="80" height="80" class="rounded-circle " />
                                 @else
                                 <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="" width="50" height="50" class="rounded-circle " />
@@ -365,43 +383,11 @@
 <!-- Close Content -->
 @endsection
 
-
-
-
-{{-- @foreach ($reviews as $item)
-                    <div class="user_review">
-                        <div class="d-flex justify-content-between">
-                            <label for="">{{ $item->users->name}}</label>
-                            @if ($item->id_user = Auth::id())
-                                <a href="{{ url('edit-review/'.$products->name_prod.'/userreview')}}" class="btn btn-success">Edit</a>
-                            @endif
-                        </div>
-                        <hr class="my-2">
-                        @php
-                            $rating = App\Models\Notation::where('id_prod',$products->id)->where('id_user',$item->users->id)->first();
-                        @endphp
-                        @if ($rating)
-                            @php
-                                $user_rated = $rating->stars_rated ;
-                            @endphp
-                            @for ($i = 1; $i <= $user_rated ; $i++)
-                            <i class="fa fa-star text-warning"></i>
-                            @endfor
-                            @for ($j = $user_rated+1; $j <= 5; $j++)
-                            <i class="bi bi-star text-secondary"></i>
-                            @endfor
-                            @else
-                            <i class="bi bi-star text-secondary"></i>
-                            <i class="bi bi-star text-secondary"></i>
-                            <i class="bi bi-star text-secondary"></i>
-                            <i class="bi bi-star text-secondary"></i>
-                            <i class="bi bi-star text-secondary"></i>
-                            No Rating
-                        @endif
-                            <small> Reviewed on {{ $item->created_at->format('d M Y')}}</small>
-                        <p class="my-2">
-                            {{ $item->user_review}}
-                        </p>
-                        <hr class="my-2">
-                    </div>
-                    @endforeach --}}
+@section('scripts')
+    <script>
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+        })
+    </script>
+@endsection
