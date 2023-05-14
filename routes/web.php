@@ -154,6 +154,11 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     Route::any('update-order/{id}', [OrdersController::class, 'updateorder']);
     //
     Route::get('order-history', [OrdersController::class, 'historyorder']);
+    //
+    Route::post('delete-all-orders', [OrdersController::class, 'deletedOrder']);
+    //
+    Route::post('delete-order-item',[OrdersController::class, 'deletedOrderitem']);
+
 
     // Router For Front
     // Router for users

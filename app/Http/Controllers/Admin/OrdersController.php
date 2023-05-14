@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invoices;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -41,6 +42,24 @@ class OrdersController extends Controller
     {
         $orders = Order::where('status', '0')->count();
         return response()->json(['count' => $orders]);
+
+    }
+
+    public function deletedOrder(Request $request)
+    {
+        $id_order = $request->input('id_order');
+        $orders = Order::find($id_order);
+        $orders->delete();
+        return response()->json(['message' => 'order Deleted Successfully']);
+
+    }
+
+    public function deletedOrderitem(Request $request)
+    {
+        $id = $request->input('id_invoices');
+        $orders = Invoices::find($id);
+        $orders->delete();
+        return response()->json(['message' => 'order Deleted Successfully']);
 
     }
 }
