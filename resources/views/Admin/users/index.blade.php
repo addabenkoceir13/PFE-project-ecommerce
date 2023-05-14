@@ -7,16 +7,35 @@
 @section('content')
 <div class="card border-0">
     <div class="header-body row">
-        <div class="col-md-10">
-            <h1>Registered Users</h1>
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h3 class="card-title">Users List</h3>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <form action="">
+                        <div class="search">
+                            <input   type="search" name="name_user" id="search_users" class="search-input" placeholder="Search User...">
+                            <a href="#" class="search-icon"> <i class="fa fa-search"></i> </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="card-body">
+        <div class="card p-2">
+            <table class="table">
+                <tbody id="users-list">
+                </tbody>
+            </table>
+        </div>
         {{-- start Continair --}}
         <div class="container">
             <div class="row">
                 @foreach ($users as $item)
-                    <div class="col-sm-12 col-md-4 col-xl-4 mt-2">
+                    <div class="col-sm-12 col-md-6 col-xl-4 mt-2">
                         <div class="card p-1 h-100">
                             <div class="card-body ">
                                 <div class=" image d-flex flex-column justify-content-center align-items-center">
@@ -65,10 +84,39 @@
                                 <div class="rounded  date ">
                                     <span class="join">Joined {{ $item->created_at->format('d M Y')}}</span>
                                 </div>
-                                <a href="{{ url('view-user/'.$item->id)}}" type="button" class="btn btn-outline-success mb-1">View</a>
-
+                                <div>
+                                    @if ($item->role_as == 1)
+                                        <a href="{{ url('view-user/'.$item->id)}}" type="button" class="btn btn-outline-success "><i class="bi bi-person-fill-up"></i></a>
+                                    @else
+                                        <a href="{{ url('view-user/'.$item->id)}}" type="button" class="btn btn-outline-success "><i class="bi bi-person-fill-up"></i></a>
+                                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal{{ $item->id }}">
+                                            <i class="bi bi-person-dash-fill"></i>
+                                        </button>
+                                    @endif
+                                </div>
                             </div>
+                            {{-- Start Modal Delet user --}}
+                            <div class="modal fade" id="confirmDeleteModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered users_date" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete this user {{ $item->fname .' '.$item->lname }}?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form method="POST">
+                                                <input type="hidden" class="id_user" name="id_user" value="{{ $item->id }}">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-danger daleted-users">Delete</button>
+                                            </form>
 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{-- end Modal Delet user --}}
                         </div>
                     </div>
                 @endforeach

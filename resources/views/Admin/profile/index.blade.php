@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Supplier Revise | Admin ')
+@section('title', 'Profile | Admin ')
 
-@section('title-page-cat' , 'Suppliers Page')
+@section('title-page-cat' , 'Admni Page')
 
 @section('content')
 <div class="container rounded bg-white mt-5 mb-5">

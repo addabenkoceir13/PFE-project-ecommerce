@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 
+
 class SuppliersController extends Controller
 {
     // this is path function image
@@ -180,4 +181,13 @@ class SuppliersController extends Controller
 
 
     }
+
+    public function viewForm($id)
+    {
+        $suppliers = Suppliers::find($id);
+        return view('admin.contect.supplier' , compact('suppliers'));
+
+    }
+
+
 }

@@ -158,6 +158,14 @@
                         <label class=" d-block" style="background: #FFFF00; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck12"></label>
                     </div>
                     <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="silver" id="invalidCheck13" >
+                        <label class=" d-block" style="background: silver; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck13"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
+                        <input  type="checkbox" name="colors[]"  value="gray" id="invalidCheck14" >
+                        <label class=" d-block" style="background: gray; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck14"></label>
+                    </div>
+                    <div class="form-check1 form-check-inline">
                         <input  type="checkbox" name="colors[]"  value="" id="invalidCheck" >
                         <label class=" d-block" style="background: #; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck"></label>
                     </div>
@@ -214,7 +222,9 @@
         form.classList.add('was-validated')
     }, false)
     })
-})()
+})();
+
+
 </Script>
 @endsection
 

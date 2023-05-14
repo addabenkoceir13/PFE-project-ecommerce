@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\FrontConteroller;
 use App\Http\Controllers\Frontend\CommandeController;
 use App\Http\Controller\Frontend\CkeckoutController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ContectController;
 use App\Http\Controllers\Admin\FrontController;
 use App\Http\Controllers\Admin\MapController;
 use App\Http\Controllers\Admin\OrdersController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Frontend\WishlistContrller;
 use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\RecommendationController;
 use App\Http\Controllers\Frontend\ReviewContoller;
+use App\Models\Suppliers;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,7 @@ Auth::routes();
 
 // Router for Frontend
 Route::get('/', [FrontConteroller::class , 'index']);
+
 Route::get('/home', [FrontConteroller::class , 'index'])->name('home');
 
 Route::get('categorys' , [FrontConteroller::class, 'category']);
@@ -155,6 +158,10 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     Route::get('users', [UsersController::class, 'users']);
     //
     Route::get('view-user/{id}', [UsersController::class, 'viewuser']);
+    //
+    Route::get('users-list',[UsersController::class,  'search']);
+    //
+    Route::post('deleted-user', [UsersController::class, 'deletedUser']);
 
     // Router For Suppliers
     Route::get('suppliers', [SuppliersController::class, 'index']);
@@ -166,6 +173,12 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     Route::get('view-suppliers/{id}', [SuppliersController::class, 'viewSupplier']);
     //
     Route::post('update-supplier/{id}', [SuppliersController::class, 'updateSupplier']);
+    //
+    Route::get('send-email-suppliers/{id}',[SuppliersController::class, 'viewForm']);
+    //
+    Route::post('send-email',[ContectController::class, 'sendEmailSupplier']);
+    //
+    Route::get('send-email',[ContectController::class, 'sendEmail']);
 
     // Router For map suppliers
     Route::get('map', [MapController::class, 'index']);

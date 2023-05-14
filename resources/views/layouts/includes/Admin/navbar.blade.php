@@ -10,13 +10,12 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-bell fs-5"></i>
                         <span class="position-absolute  translate-middle badge rounded-pill bg-danger  order-count">
-                            <span class="visually-hidden">unread messages</span>
+                            <span id="product-requests" class="visually-hidden">unread messages</span>
                         </span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @php
                             $orders = App\models\Order::where('status', '0')->get();
-
                         @endphp
                         @foreach ($orders as $item)
                             <li><a class="dropdown-item" href="{{ url('admin/view-order/'.$item->id)}}">{{ $item->tracking_no }}</a></li>

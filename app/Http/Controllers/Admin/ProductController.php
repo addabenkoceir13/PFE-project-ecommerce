@@ -50,7 +50,12 @@ class ProductController extends Controller
             'small_descripton'  =>'required|string',
             'description'       =>'required|string',
         ]);
+
         $file_name = $this->savePhotos($request->image , 'assets/uploads/products/') ;
+
+        $colors = json_encode($request->input('colors'));
+        $storages = json_encode($request->input('storages'));
+
         Products::create([
             'id_cate'           =>  $request->id_cate,
             'id_supp'           =>  $request->id_supp,
@@ -60,20 +65,12 @@ class ProductController extends Controller
             'selling_price'     =>  $request->selling_price,
             'status'            =>  $request->status == TRUE ? '1': '0',
             'qte_stock'         =>  $request->qte_stock,
+            'storages'          =>  $storages,
+            'colors'            =>  $colors,
             'image'             =>  $file_name,
             'small_descripton'  =>  $request->small_descripton,
             'description'       =>  $request->description,
         ]);
-
-        $colors = json_encode($request->input('colors', []));
-        $storages = json_encode($request->input('storages', []));
-
-        $partproducts = new Products_part();
-        $id_product = Products::where('name_prod', $request->name_prod)->first();
-        $partproducts->id_prod = $id_product->id;
-        $partproducts->colors = $colors;
-        $partproducts->storage = $storages;
-        $partproducts->save();
 
         return  redirect('/products')->with('status', "Products Added Successfull");
     }
@@ -101,6 +98,7 @@ class ProductController extends Controller
             'description'       =>'required|string',
         ]);
         $products = Products::find($id);
+        $products_check = Products::where('id',$id)->first();
 
         $file_name = $products->image;
         if ($request->hasFile('image'))
@@ -113,6 +111,26 @@ class ProductController extends Controller
                 $file_name = $this->savePhotos($request->image , 'assets/uploads/products');
         }
 
+        $colors = json_encode($request->input('colors', []));
+        $storages = json_encode($request->input('storages', []));
+
+        if (!(count(json_decode($colors)) == 0))
+        {
+            $products->colors = $colors;
+        }
+        else
+        {
+            $products->colors = $request->input('colorsOld');
+        }
+        if (!(count(json_decode($storages)) == 0))
+        {
+            $products->storages = $storages;
+        }
+        else
+        {
+            $products->storages = $request->input('storagesOld');
+        }
+
         $products->name_prod        = $request->input('name_prod');
         $products->mark_prod        = $request->input('mark_prod');
         $products->original_price   = $request->input('original_price');
@@ -123,14 +141,6 @@ class ProductController extends Controller
         $products->small_descripton = $request->input('small_descripton');
         $products->description      = $request->input('description');
         $products->update();
-
-        // $colors = json_encode($request->input('colors', []));
-        // $storages = json_encode($request->input('storages', []));
-
-        // $partproducts = Products_part::where('id_prod', $id)->first();
-        // $partproducts->colors = $colors;
-        // $partproducts->storage = $storages;
-        // $partproducts->update();
 
         return redirect('products')->with("status","Products update Successfully");
     }

@@ -40,7 +40,7 @@
 {{-- jQ --}}
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-{{-- JavaScript And jQuery For Search --}}
+{{-- JavaScript And jQuery For Search Products--}}
 <script>
 
     var availableTags = [];
@@ -60,8 +60,6 @@
             source: availableTags
         });
     }
-
-
 </script>
 {{-- JavaScript for sweet alert --}}
 @if (session('status'))

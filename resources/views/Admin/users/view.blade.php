@@ -68,20 +68,33 @@
                                             <h6 class="text-muted f-w-400">{{ $user->pincode }}</h6>
                                         </div>
                                     </div>
-                                    {{-- <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Purchases</h6>
+                                    <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Purchases</h6>
                                     <div class="row">
-                                        @php
-                                            $phones = App\Models\Orders::where('id_user', '1')->count();
-                                        @endphp
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Phones</p>
-                                            <h6 class="text-muted f-w-400">{{ $phones}}</h6>
+                                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal{{ $user->id }}">
+                                            <i class="bi bi-person-dash-fill"></i>
+                                        </button>
+                                        {{-- Start Modal Delet user --}}
+                                        <div class="modal fade" id="confirmDeleteModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered users_date" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to delete this user {{ $user->fname .' '.$user->lname }}?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form method="POST">
+                                                            <input type="hidden" class="id_user" name="id_user" value="{{ $user->id }}">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-danger daleted-users">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Computers</p>
-                                            <h6 class="text-muted f-w-400">Dinoter husainm</h6>
-                                        </div>
-                                    </div> --}}
+                                    {{-- end Modal Delet user --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>

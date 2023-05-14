@@ -69,12 +69,14 @@
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Status</label>
-                    <div class="form-check form-switch">
+                    <div class="form-chec form-switch">
                         <input class="form-check-input mt-2" type="checkbox" {{ $products->status == '1' ? 'checked':'1'}} role="switch"  name="status" >
                         <label class="form-check-label mt-1" for="flexSwitchCheckDefault"> Status</label>
                     </div>
                 </div>
                 <div class="col-md-6">
+                    <input type="hidden" name="colorsOld" value="{{ $products->colors}}">
+                    <input type="hidden" name="storagesOld" value="{{ $products->storages}}">
                     <label class="form-label">Stocrages</label><br>
                     <div class="form-check form-check-inline">
                         <input  type="checkbox" name="storages[]"  value="64 GB" id="ids1">
@@ -153,12 +155,12 @@
                         <label class=" d-block" style="background: #FFFF00; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck12"></label>
                     </div>
                     <div class="form-check1 form-check-inline">
-                        <input  type="checkbox" name="colors[]"  value="" id="invalidCheck" >
-                        <label class=" d-block" style="background: #; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck"></label>
+                        <input  type="checkbox" name="colors[]"  value="silver" id="invalidCheck13" >
+                        <label class=" d-block" style="background: silver; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck13"></label>
                     </div>
                     <div class="form-check1 form-check-inline">
-                        <input  type="checkbox" name="colors[]"  value="" id="invalidCheck" >
-                        <label class=" d-block" style="background: #; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck"></label>
+                        <input  type="checkbox" name="colors[]"  value="gray" id="invalidCheck14" >
+                        <label class=" d-block" style="background: gray; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" for="invalidCheck14"></label>
                     </div>
 
                 </div>

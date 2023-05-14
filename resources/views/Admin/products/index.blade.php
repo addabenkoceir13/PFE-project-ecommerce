@@ -38,25 +38,45 @@
                         <tr>
                             <td scope="row">{{ $item->id}}</td>
                             <td>{{ $item->category->name_cate}}</td>
-                            <td>{{ $item->fournisseur->fname}} <br> {{$item->fournisseur->lname}}</td>
+                            @php
+                                $spplierexits = App\Models\Suppliers::where('id', $item->id_supp)->exists();
+                            @endphp
+                            @if ( $spplierexits)
+                                <td>{{ $item->fournisseur->fname}} <br> {{$item->fournisseur->lname}}</td>
+                            @else
+                                <td>No Suppliers</td>
+                            @endif
                             <td>{{ $item->name_prod}}</td>
                             <td>{{ $item->mark_prod}}</td>
                             <td>{{ $item->original_price}}</td>
                             <td>{{ $item->selling_price}}</td>
                             <td>{{ $item->qte_stock}}</td>
-                            <td>{{ $item->storage}}</td>
-                            <td>{{ $item->color}}</td>
-                            {{-- <td>
-                                {{-- @foreach ($totalc as  $varcolor) --}}
-                                    {{-- <span style="display: inline-block;
-                                                width: 20px;
-                                                height: 20px;
-                                                margin: 6px;
-                                                background-color: {{ $item->color}}">
-                                    </span> --}}
-                                {{-- @endforeach --
-                            </td> --}}
-                            {{-- <td>{{ $item->description}}</td> --}}
+                            @php
+                                $storage = json_decode($item->storages, true);
+                                $color   = json_decode($item->colors);
+                            @endphp
+                                @if ($storage > 0)
+                                <td>
+                                    @foreach($storage as $items)
+                                        <div class="p-1 m-1 text-center" style="background: #e6d6d6;">{{ $items }}</div>
+                                    @endforeach
+                                </td>
+                                @else
+                                    <td>No Storages</td>
+                                @endif
+                                @if ($storage > 0)
+                                <td>
+                                    @foreach($color as $items)
+                                        <div class="d-block m-1" style="background: {{$items}}; width: 32px; height: 32px; border-radius: 8px; cursor: pointer;"></div>
+                                    @endforeach
+                                </td>
+                                @else
+                                    <td>No Colors</td>
+                                @endif
+
+
+                            {{-- <td>{{ $storage }}</td> --}}
+                            {{-- <td>{{ $colors}}</td> --}}
 
                             <td> <img src="{{ asset('assets/uploads/products/'.$item->image)}}" width="200px" alt="{{$item->image }}"></td>
                             <td>

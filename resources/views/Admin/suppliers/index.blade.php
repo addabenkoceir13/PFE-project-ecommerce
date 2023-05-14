@@ -154,11 +154,12 @@
                                     <span class="join">Joined {{ $item->created_at->format('d M Y')}}</span>
                                 </div>
                                 <div>
+                                    <a href="{{ url('send-email-suppliers/'.$item->id)}}" type="button" class="btn btn-outline-secondary "><i class="bi bi-envelope-plus"></i></a>
                                     <a href="{{ url('view-suppliers/'.$item->id)}}" type="button" class="btn btn-outline-success "><i class="bi bi-pencil-square"></i></a>
                                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal{{ $item->id }}">
                                         <i class="bi bi-person-dash-fill"></i>
                                     </button>
-
+                                    {{-- Start Modal for deleted supplier --}}
                                     <div class="modal fade" id="confirmDeleteModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -180,6 +181,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {{-- End modal for deleted supplier --}}
                                 </div>
                             </div>
                         </div>
