@@ -365,12 +365,17 @@ $(document).ready(function() {
     // Deleted Orders for user
     $(document).on('click','.deleted-order',function(e) {
         e.preventDefault();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
         var id_order = $(this).closest('.orde-data').find('.id_order').val();
 
         $.ajax({
             method: "POST",
-            url: "delete-all-orders",
+            url: "/delete-all-orders",
             data:{
                 'id_order': id_order,
             },
@@ -400,42 +405,6 @@ $(document).ready(function() {
         });
     });
 
-    // Deleted Orders item for user
-    $(document).on('click','.deleted-order-item',function(e) {
-        e.preventDefault();
 
-        var id_order = $(this).closest('.orders-data').find('.id_invoices').val();
-
-        $.ajax({
-            method: "POST",
-            url: "delete-order-item",
-            data:{
-                'id_invoices': id_order,
-            },
-            datatype:"json",
-            success: function(response){
-                window.location.reload();
-                if (response.message) {
-                    Swal.fire({
-                    icon: 'success',
-                    title: 'success',
-                    text: response.message,
-                    showConfirmButton: false,
-                    timer: 5000
-                    });
-                }
-                else if(response.messageerroe)
-                {
-                    Swal.fire({
-                    icon: 'error',
-                    title: 'Oops ..',
-                    text: response.messageerroe,
-                    showConfirmButton: false,
-                    timer: 5000
-                    });
-                }
-            }
-        });
-    });
 
 });

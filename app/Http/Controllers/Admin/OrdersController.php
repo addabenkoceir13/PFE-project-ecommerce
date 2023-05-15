@@ -45,21 +45,4 @@ class OrdersController extends Controller
 
     }
 
-    public function deletedOrder(Request $request)
-    {
-        $id_order = $request->input('id_order');
-        $orders = Order::find($id_order);
-        $orders->delete();
-        return response()->json(['message' => 'order Deleted Successfully']);
-
-    }
-
-    public function deletedOrderitem(Request $request)
-    {
-        $id = $request->input('id_invoices');
-        $orders = Invoices::find($id);
-        $orders->delete();
-        return response()->json(['message' => 'order Deleted Successfully']);
-
-    }
 }

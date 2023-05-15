@@ -16,7 +16,7 @@
                 <div class="card-body bg-light">
                     <div class="d-flex justify-content-between">
                         <h4>Shipping Details</h4>
-                        <p class="">{{ $orders->tracking_no }}</p>
+                        {{-- <p class="">{{ $orders->tracking_no }}</p> --}}
                     </div>
                     <hr class="my-4">
                     <div class="row mb-4 d-flex justify-content-between align-items-center">
@@ -66,13 +66,12 @@
                                 <th>Quantity</th>
                                 <th>Price</th>
                                 <th>Image</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($orders->ordersitems as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
+                                <td>  {{$loop->iteration}}           </td>
                                 <td>{{ $item->products->name_prod }}</td>
                                 <td>{{ $item->qty_prod }}</td>
                                 @if ($item->products->selling_price > 0)
@@ -83,35 +82,7 @@
                                 <td>
                                     <img src="{{ asset('assets/uploads/products/'. $item->products->image) }}" width="80px" alt="{{ 'image'.$item->products->image}}">
                                 </td>
-                                <td>
-                                    <button  type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$item->id}}"  data-target="#confirmDeleteModal">
-                                        <i class="bi bi-bag-x"></i>
-                                    </button>
-                                </td>
                             </tr>
-                            {{-- Start delete modal --}}
-                            <div class="modal fade" id="exampleModal{{$item->id}}" id="confirmDeleteModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure you want to delete this Order {{$item->products->name_prod }}?
-                                        </div>
-                                        <div class="modal-footer orders-data">
-                                            <form  method="POST">
-                                                @csrf
-                                                <input type="text" class="id_invoices" value="{{$item->id}}">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                <button type="submit" class="btn btn-danger deleted-order-item">Delete</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {{-- end delete modal --}}
                         @endforeach
                         </tbody>
                     </table>

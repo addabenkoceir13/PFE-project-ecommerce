@@ -82,5 +82,39 @@ class UserController extends Controller
         return view('Frontend.orders.view', compact('orders'));
     }
 
+    public function deletedOrder(Request $request)
+    {
+        $id_order = $request->input('id_order');
+
+        $order_check = Order::find($id_order);
+        $invoces_check = Invoices::where('id_order',$id_order)->exists();
+
+        if ($order_check)
+        {
+            if ( $invoces_check) {
+                $orders = Order::find($id_order);
+                $invoces = Invoices::where('id_order',$id_order)->get();
+                $invoces_ids = $invoces->pluck('id')->toArray();
+
+                foreach($invoces_ids as $ids)
+                {
+                    $invoices = Invoices::find($ids);
+                    $invoices->delete();
+                }
+                $orders->delete();
+                // return response()->json($invoces_ids);
+                return response()->json(['message' => 'order Deleted Successfully']);
+            }
+            else
+            {
+                return response()->json(['messageeeror' => 'Sorry The Invoices Not exists']);
+            }
+        }
+        else
+        {
+            return response()->json(['messageeeror' => 'Sorry The order Not exists']);
+        }
+    }
+
 
 }

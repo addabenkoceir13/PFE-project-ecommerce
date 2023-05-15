@@ -107,6 +107,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('my-orders', [UserController::class, 'index']);
     //
     Route::get('view-order/{id}', [UserController::class, 'vieworder']);
+    //
+    Route::post('delete-all-orders', [UserController::class, 'deletedOrder']);
 
 });
 
@@ -155,9 +157,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     //
     Route::get('order-history', [OrdersController::class, 'historyorder']);
     //
-    Route::post('delete-all-orders', [OrdersController::class, 'deletedOrder']);
-    //
-    Route::post('delete-order-item',[OrdersController::class, 'deletedOrderitem']);
+
 
 
     // Router For Front
