@@ -50,9 +50,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'fname'     => ['required', 'string', 'max:255'],
+                'lname'     => ['required', 'string', 'max:255'],
+                'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password'  => ['required', 'string', 'min:8', 'confirmed'],
+                'address1'  => ['required', 'string', 'max:255'],
+                'address2'  => ['required', 'string', 'max:255'],
+                'code'      => ['required',  'min:0'],
+                'phone'     => ['required', ],
+                'zip'       => ['required', 'min:0'],
+                'city'      => ['required', 'string', 'max:255'],
+                'state'     => ['required', 'string', 'max:255'],
+                'country'   => ['required', 'string', 'max:255'],
+
         ]);
     }
 
@@ -65,9 +75,18 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name'      => ucwords($data['fname'] .' ' . $data['lname']),
+            'fname'     => ucwords($data['fname']),
+            'lname'     => ucwords($data['lname']),
+            'email'     => $data['email'],
+            'password'  => Hash::make($data['password']),
+            'phone'     => $data['phone'],
+            'address1'  => ucwords($data['address1']),
+            'address2'  => ucwords($data['address2']),
+            'city'      => ucwords($data['city']),
+            'state'     => ucwords($data['state']),
+            'country'   => ucwords($data['country']),
+            'pincode'   => $data['zip'],
         ]);
     }
 }

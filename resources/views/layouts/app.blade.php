@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Log In') }}</title>
+    <title>@yield('title', 'Unknow Title')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -15,6 +15,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('bootstrap513/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css-register/style.css')}}">
 </head>
 <body>
     <div id="app">
@@ -75,10 +76,11 @@
             </div>
         </nav> --}}
 
-        <main class="py-4">
+        <main >
             @yield('content')
         </main>
     </div>
+    @yield('scripts')
     <!-- Scripts -->
     <script src="{{ asset('bootstrap513/js/bootstrap.min.js') }}" defer></script>
 </body>
