@@ -195,6 +195,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     //
     Route::post('edit-profile-admin', [AdminController::class, 'editProfileadmin']);
     //
+    Route::get('admin', [AdminController::class, 'admin']);
+    //
+    Route::post('add-admin', [AdminController::class, 'addAdmin']);
 
     //
     Route::get('load-orders-count', [OrdersController::class, 'ordersCount']);

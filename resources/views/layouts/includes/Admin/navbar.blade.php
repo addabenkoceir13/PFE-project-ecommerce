@@ -30,7 +30,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ url('admin-profile')}}">My Profil</a>
-                        <a class="dropdown-item" href="#">Settings action</a>
+                        <a class="dropdown-item" href="{{ url('admin')}} ">Admin </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
