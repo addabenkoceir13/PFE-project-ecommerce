@@ -46,17 +46,17 @@ class AdminController extends Controller
                 }
                 $file_name = $this->savePhotos($request->image , 'assets/Frontend/Users/') ;
         };
-        $user->name        =  $request->input('fname').' '.$request->input('lname');
-        $user->fname        = $request->input('fname');
-        $user->lname        = $request->input('lname');
+        $user->name        =  ucwords($request->input('fname').' '.$request->input('lname'));
+        $user->fname        = ucwords($request->input('fname'));
+        $user->lname        = ucwords($request->input('lname'));
         $user->phone        = $request->input('phone');
         $user->email        = $request->input('email');
-        $user->address1     = $request->input('address1');
-        $user->address2     = $request->input('address2');
-        $user->city         = $request->input('city');
-        $user->state        = $request->input('state');
-        $user->country      = $request->input('country');
-        $user->pincode      = $request->input('pincode');
+        $user->address1     = ucwords($request->input('address1'));
+        $user->address2     = ucwords($request->input('address2'));
+        $user->city         = ucwords($request->input('city'));
+        $user->state        = ucwords($request->input('state'));
+        $user->country      = ucwords($request->input('country'));
+        $user->pincode      = ucwords($request->input('pincode'));
         $user->image        = $file_name;
         $user->update();
         return  redirect('/admin-profile')->with('status', "Profile update Successfull");

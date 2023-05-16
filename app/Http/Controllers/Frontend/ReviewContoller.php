@@ -15,7 +15,7 @@ class ReviewContoller extends Controller
     {
         $id_product   = $request->input('id_product');
         $name_product = $request->input('name_product');
-        $user_review  = $request->input('user_review');
+        $user_review  = ucfirst($request->input('user_review'));
 
         $product = Products::where('id', $id_product)->first();
         if ($product)
@@ -79,7 +79,7 @@ class ReviewContoller extends Controller
 
     public function update(Request $request)
     {
-        $user_review = $request->input('user_review');
+        $user_review = ucfirst($request->input('user_review'));
 
         if ($user_review != '')
         {

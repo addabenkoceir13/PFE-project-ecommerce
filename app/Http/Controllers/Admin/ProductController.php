@@ -59,8 +59,8 @@ class ProductController extends Controller
         Products::create([
             'id_cate'           =>  $request->id_cate,
             'id_supp'           =>  $request->id_supp,
-            'name_prod'         =>  $request->name_prod,
-            'mark_prod'         =>  $request->mark_prod,
+            'name_prod'         =>  ucwords($request->name_prod),
+            'mark_prod'         =>  ucwords($request->mark_prod),
             'original_price'    =>  $request->original_price,
             'selling_price'     =>  $request->selling_price,
             'status'            =>  $request->status == TRUE ? '1': '0',
@@ -68,8 +68,8 @@ class ProductController extends Controller
             'storages'          =>  $storages,
             'colors'            =>  $colors,
             'image'             =>  $file_name,
-            'small_descripton'  =>  $request->small_descripton,
-            'description'       =>  $request->description,
+            'small_descripton'  =>  ucfirst($request->small_descripton),
+            'description'       =>  ucfirst($request->description),
         ]);
 
         return  redirect('/products')->with('status', "Products Added Successfull");
@@ -131,15 +131,15 @@ class ProductController extends Controller
             $products->storages = $request->input('storagesOld');
         }
 
-        $products->name_prod        = $request->input('name_prod');
-        $products->mark_prod        = $request->input('mark_prod');
+        $products->name_prod        = ucwords($request->input('name_prod'));
+        $products->mark_prod        = ucwords($request->input('mark_prod'));
         $products->original_price   = $request->input('original_price');
         $products->selling_price    = $request->input('selling_price');
         $products->status           = $request->input('status') == TRUE ? '1': '0';
         $products->qte_stock        = $request->input('qte_stock');
         $products->image            = $file_name;
-        $products->small_descripton = $request->input('small_descripton');
-        $products->description      = $request->input('description');
+        $products->small_descripton = ucfirst($request->input('small_descripton'));
+        $products->description      = ucfirst($request->input('description'));
         $products->update();
 
         return redirect('products')->with("status","Products update Successfully");

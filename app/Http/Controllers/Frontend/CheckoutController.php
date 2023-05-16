@@ -56,15 +56,15 @@ class CheckoutController extends Controller
 
         $order = new Order();
         $order->id_user     = Auth::id();
-        $order->fname       = $request->input('fname');
-        $order->lname       = $request->input('lname');
+        $order->fname       = ucwords($request->input('fname'));
+        $order->lname       = ucwords($request->input('lname'));
         $order->email       = $request->input('email');
         $order->phone       = $request->input('phone');
-        $order->address1    = $request->input('address1');
-        $order->address2    = $request->input('address2');
-        $order->city        = $request->input('city');
-        $order->country     = $request->input('country');
-        $order->state       = $request->input('state');
+        $order->address1    = ucwords($request->input('address1'));
+        $order->address2    = ucwords($request->input('address2'));
+        $order->city        = ucwords($request->input('city'));
+        $order->country     = ucwords($request->input('country'));
+        $order->state       = ucwords($request->input('state'));
         $order->pincode     = $request->input('pincode');
         $order->status      = '0';
         $order->image       = $file_name;
@@ -91,18 +91,18 @@ class CheckoutController extends Controller
             $invoices->total_price = $request->input('price_total');
             $invoices->update();
 
-        if(Auth::user()->address1 == NULL)
+        if(Auth::user()->address2 != $request->input('address2'))
         {
             $user = User::where('id', Auth::id())->first();
 
-            $user->fname     = $request->input('fname');
-            $user->lname     = $request->input('lname');
+            $user->fname     = ucwords($request->input('fname'));
+            $user->lname     = ucwords($request->input('lname'));
             $user->phone     = $request->input('phone');
-            $user->address1  = $request->input('address1');
-            $user->address2  = $request->input('address2');
-            $user->city      = $request->input('city');
-            $user->country   = $request->input('country');
-            $user->state     = $request->input('state');
+            $user->address1  = ucwords($request->input('address1'));
+            $user->address2  = ucwords($request->input('address2'));
+            $user->city      = ucwords($request->input('city'));
+            $user->country   = ucwords($request->input('country'));
+            $user->state     = ucwords($request->input('state'));
             $user->pincode   = $request->input('pincode');
             $user->update();
         }

@@ -71,13 +71,13 @@ class SuppliersController extends Controller
             $suppliers->let = $lat;
             $suppliers->lng = $lng;
 
-            $suppliers->fname       = $request->input('fname');
-            $suppliers->lname       = $request->input('lname');
+            $suppliers->fname       = ucwords($request->input('fname'));
+            $suppliers->lname       = ucwords($request->input('lname'));
             $suppliers->email       = $request->input('email');
             $suppliers->phone       = $request->input('phone');
             // $suppliers->image       = $file_name;
-            $suppliers->address     = $request->input('address');
-            $suppliers->description = $request->input('descrpition');
+            $suppliers->address     = ucwords($request->input('address'));
+            $suppliers->description = ucfirst($request->input('descrpition'));
             $suppliers->save();
 
             return redirect('suppliers')->with("status" , "Suppliers Added Successfull");

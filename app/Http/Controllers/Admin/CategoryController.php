@@ -39,9 +39,9 @@ class CategoryController extends Controller
 
         $file_name = $this->savePhotos($request->image , 'assets/uploads/category/') ;
         Category::create([
-            'name_cate'     =>  $request->name_cate ,
-            'mate_title'    =>  $request->mate_title,
-            'description'   =>  $request->description,
+            'name_cate'     =>  ucwords($request->name_cate) ,
+            'mate_title'    =>  ucwords($request->mate_title),
+            'description'   =>  ucfirst($request->description),
             'image'         =>  $file_name,
         ]);
         return  redirect('/category')->with('status', "Category Added Successfull");
@@ -73,9 +73,9 @@ class CategoryController extends Controller
             }
             $file_name = $this->savePhotos($request->image , 'assets/uploads/category');
         }
-        $categorys->name_cate    = $request->input('name_cate');
-        $categorys->mate_title   = $request->input('mate_title');
-        $categorys->description  = $request->input('description');
+        $categorys->name_cate    = ucwords($request->input('name_cate'));
+        $categorys->mate_title   = ucwords($request->input('mate_title'));
+        $categorys->description  = ucfirst($request->input('description'));
         $categorys->image        = $file_name;
         $categorys->update();
         return redirect('category')->with("status","category update Successfully");
