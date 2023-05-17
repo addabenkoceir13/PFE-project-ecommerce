@@ -10,6 +10,7 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@0;1&family=Open+Sans:wght@300&display=swap');
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -11139,10 +11140,12 @@ textarea.form-control-lg {
 }
 
 #sidebar-wrapper .sidebar-heading {
-  padding: 0.675rem 1.25rem;
+  padding: 0.375rem 1.25rem;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 900;
   text-align: center;
+  font-family: 'Noto Serif', serif;
+font-family: 'Open Sans', sans-serif;
 }
 
 #sidebar-wrapper .list-group {

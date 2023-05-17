@@ -1,6 +1,9 @@
 <!-- Sidebar-->
 <div class="border-end bg-w" id="sidebar-wrapper">
-    <div class="sidebar-heading border-bottom bg-w">TechShop</div>
+    <div class="sidebar-heading border-bottom bg-w">
+        <img src="{{asset('assets/Frontend/icon/logo33.png')}}" class="rounded-circle" width="50px" alt="">
+            TECHSHOP
+    </div>
     <div class="list-group list-group-flush bg-w">
         <a class="list-group-item list-group-item-action list-group-item-w  p-3 {{ Request::is('dashboard') ? 'active':''; }}" href="{{ url('dashboard')}}">
             <i class="mx-2 bi bi-speedometer2"></i> Dashboard</a>
