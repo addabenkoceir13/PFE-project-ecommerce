@@ -8,7 +8,14 @@
 </head>
 <body>
     <h1>Nchallah tatmcha barek</h1>
-    {{-- <h1>{{ $subject }}</h1> --}}
-    <p> </p>
+    <h1>Contact Form Submission</h1>
+    <h3>{{ $body }}</h3>
+
+    {{-- <p><strong>Name:</strong> {{ $fname }}</p>
+    <p><strong>Name:</strong> {{ $lname }}</p>
+    <p><strong>Email:</strong> {{ $email }}</p>
+    <p><strong>Subject:</strong> {{ $subject }}</p>
+    <p><strong>Message:</strong> {{ $message }}</p> --}}
+
 </body>
 </html>

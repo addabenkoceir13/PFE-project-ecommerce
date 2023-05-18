@@ -9,16 +9,6 @@
         <div class="d-flex justify-content-center ">
             <form action="{{ url('send-email')}}"  method="POST">
                 @csrf
-                @if (Session::has('error'))
-                    <div class="alert alert-danger">
-                        {{ Session::get('erroe') }}
-                    </div>
-                @endif
-                @if (Session::has('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
                 <div class="row ">
                         <div class="col-md-6">
                             <label>First Name</label>

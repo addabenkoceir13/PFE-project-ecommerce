@@ -184,8 +184,10 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     Route::get('send-email-suppliers/{id}',[SuppliersController::class, 'viewForm']);
     //
     Route::post('send-email',[ContectController::class, 'sendEmailSupplier']);
+
+    Route::get('send',[ContectController::class, 'send']);
     //
-    Route::get('send-email',[ContectController::class, 'sendEmail']);
+    // Route::get('send-email',[ContectController::class, 'sendEmail']);
 
     // Router For map suppliers
     Route::get('map', [MapController::class, 'index']);

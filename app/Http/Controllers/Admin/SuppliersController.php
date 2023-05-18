@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\UploadPhotos;
 use App\Http\Traits\UploadPhotouser;
 use App\Models\Suppliers;
+use App\Notifications\VendorCreated;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-
-
+use Illuminate\Support\Facades\Notification;
 
 class SuppliersController extends Controller
 {
@@ -80,6 +80,8 @@ class SuppliersController extends Controller
             $suppliers->description = ucfirst($request->input('descrpition'));
             $suppliers->save();
 
+
+            // Notification::send($suppliers, new VendorCreated($suppliers));
             return redirect('suppliers')->with("status" , "Suppliers Added Successfull");
         }
 
