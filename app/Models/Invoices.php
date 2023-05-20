@@ -16,6 +16,7 @@ class Invoices extends Model
         'id_prod',
         'qty_prod',
         'total_price',
+        'num_invoice',
     ];
 
     public function products()

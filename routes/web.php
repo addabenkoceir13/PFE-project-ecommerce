@@ -45,6 +45,8 @@ Auth::routes();
 
 Route::get('mailUser', [UserController::class, 'mailUser']);
 
+Route::get('/recommendations', [FrontConteroller::class, 'algo']);
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Router for Frontend
