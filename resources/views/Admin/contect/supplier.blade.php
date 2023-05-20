@@ -33,8 +33,8 @@
                         </div>
                         <div class="col-md-6">
                             <label for="phone_input">Phone</label>
-                            <input type="tel"  class="form-control  @error('Phone') is-invalid @enderror" value="{{ $suppliers->phone}}" name="Phone" placeholder="Phone">
-                            @error('Phone')
+                            <input type="tel"  class="form-control  @error('phone') is-invalid @enderror" value="{{ $suppliers->phone}}" name="phone" placeholder="Phone">
+                            @error('phone')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

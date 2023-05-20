@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\UploadPhotos;
-use App\Http\Traits\UploadPhotouser;
+use App\Mail\ContactMail;
 use App\Models\Suppliers;
-use App\Notifications\VendorCreated;
+use App\Notifications\SuppliersEmail;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
 class SuppliersController extends Controller
@@ -197,6 +198,73 @@ class SuppliersController extends Controller
         return view('admin.contect.supplier' , compact('suppliers'));
 
     }
+
+    public function SendEmailSuppliers(Request $request)
+    {
+        $validator = $request->validate([
+            'fname'         =>'required|string',
+            'lname'         =>'required|string',
+            'email'         =>'required|email',
+            'phone'         =>'required|min:0',
+            'subject'       =>'required|string',
+            'message'       =>'required|string',
+        ]);
+
+        $fname        = $request->input('fname');
+        $lname        = $request->input('lname');
+        $name         = $fname . ' ' . $lname;
+        $email        = $request->input('email');
+        $phone        = $request->input('phone');
+        $subject      = $request->input('subject');
+        $message      = $request->input('message');
+
+        $data = [
+            'name'  => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'subject' => $subject,
+            'message' => $message
+        ];
+
+        Mail::to($email)->send(new ContactMail($data));
+
+        return redirect()->back()->with("status" , "Email Sent Successfull");
+
+    }
+
+    public function SendEmail(Request $request)
+    {
+        // $validator = $request->validate([
+        //     'fname'         =>'required|string',
+        //     'lname'         =>'required|string',
+        //     'email'         =>'required|email',
+        //     'phone'         =>'required|min:0',
+        //     'subject'       =>'required|string',
+        //     'message'       =>'required|string',
+        // ]);
+
+            $fname        = $request->input('fname');
+            $lname        = $request->input('lname');
+            $email        = $request->input('email');
+            $phone        = $request->input('phone');
+            $subject      = $request->input('subject');
+            $message      = $request->input('message');
+
+
+        $supplier = Suppliers::where('email', $email)->first();
+
+        $messages["hi"]      = "Hey, {$fname} {$lname}";
+        $messages["email"]   = "Your Email: {$email}, Your Phone {$phone}";
+        $messages["subject"] = "{$subject}";
+        $messages["wish"]    = "{$message}";
+
+        $supplier->notify(new SuppliersEmail($messages));
+
+        return redirect()->back()->with("status" , "Email Sent Successfull");
+    }
+
+
+
 
 
 }

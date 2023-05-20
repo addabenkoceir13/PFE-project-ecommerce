@@ -9,6 +9,7 @@ use App\Models\Invoices;
 use App\Models\Order;
 use App\Models\Orders;
 use App\Models\User;
+use App\Notifications\BirthdayWish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -18,6 +19,18 @@ class UserController extends Controller
 {
     // use UploadPhotos;
     use UploadPhotouser;
+
+    public function mailUser(Request $request)
+    {
+        $user = User::find(1);
+
+        $messages["hi"] = "Hey, Happy Birthday {$user->name}";
+        $messages["wish"] = "On behalf of the entire company I wish you a very happy birthday and send you my best wishes for much happiness in your life.";
+
+        $user->notify(new BirthdayWish($messages));
+
+        dd('Done');
+    }
 
     public function viewindex()
     {

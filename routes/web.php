@@ -21,7 +21,10 @@ use App\Http\Controllers\Frontend\WishlistContrller;
 use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\RecommendationController;
 use App\Http\Controllers\Frontend\ReviewContoller;
+use App\Mail\ContactMail;
+use App\Mail\WelcomeMail;
 use App\Models\Suppliers;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +42,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::get('mailUser', [UserController::class, 'mailUser']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -173,6 +178,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     // Router For Suppliers
     Route::get('suppliers', [SuppliersController::class, 'index']);
     //
+    Route::get('top-suppliers', [SuppliersController::class, 'recommendSuppliers']);
+    //
     Route::post('insert-supplier' , [SuppliersController::class, 'insert']);
     //
     Route::delete('remove-supplier/{id}', [SuppliersController::class, 'removeSupp'])->name('supplier.deleted');
@@ -183,11 +190,11 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     //
     Route::get('send-email-suppliers/{id}',[SuppliersController::class, 'viewForm']);
     //
-    Route::post('send-email',[ContectController::class, 'sendEmailSupplier']);
-
-    Route::get('send',[ContectController::class, 'send']);
+    // Route::get('send-email', [SuppliersController::class , 'SendEmail']);
     //
-    // Route::get('send-email',[ContectController::class, 'sendEmail']);
+    Route::post('send-email', [SuppliersController::class , 'SendEmailSuppliers']);
+
+    Route::get('contect',[ContectController::class, 'index']);
 
     // Router For map suppliers
     Route::get('map', [MapController::class, 'index']);

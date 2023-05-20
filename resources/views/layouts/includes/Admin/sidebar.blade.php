@@ -19,6 +19,8 @@
             <i class="mx-2 bi bi-clipboard-check"></i> Orders </a>
         <a class="list-group-item list-group-item-action list-group-item-w  p-3 {{ Request::is('users') ? 'active':'';}}" href="{{ url('users')}}">
             <i class="mx-2 bi bi-people"></i> Users </a>
+        <a class="list-group-item list-group-item-action list-group-item-w  p-3 {{ Request::is('top-suppliers') ? 'active':''; }}" href="{{ url('top-suppliers')}}">
+            <i class="mx-2 bi bi-person-add"></i>Top Suppliers</a>
         <a class="list-group-item list-group-item-action list-group-item-w  p-3 {{ Request::is('suppliers') ? 'active':''; }}" href="{{ url('suppliers')}}">
             <i class="mx-2 bi bi-person-add"></i> Suppliers</a>
         <a class="list-group-item list-group-item-action list-group-item-w  p-3 {{ Request::is('map') ? 'active':'';}}" href="{{ url('map')}}">
