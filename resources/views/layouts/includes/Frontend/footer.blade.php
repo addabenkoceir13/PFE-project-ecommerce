@@ -5,9 +5,9 @@
             <div class="col-md-4 col-lg-5">
                 <div class="row">
                     <div class="col-md-12 col-lg-8 mb-md-0 mb-4">
-                        <h2 class="footer-heading"><a href="#" class="logo">Colorlib.com</a></h2>
+                        <h2 class="footer-heading"><a href="#" class="logo">Techshop.dz</a></h2>
                         <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                        <a href="#">read more <span class="ion-ios-arrow-round-forward"></span></a>
+                        <a href="{{ url('about')}}">read more <span class="ion-ios-arrow-round-forward"></span></a>
                     </div>
                 </div>
             </div>
@@ -34,10 +34,11 @@
                     <div class="col-md-3 mb-md-0 mb-4 border-left">
                         <h2 class="footer-heading">Resources</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="py-1 d-block">Security</a></li>
-                            <li><a href="#" class="py-1 d-block">Global</a></li>
-                            <li><a href="#" class="py-1 d-block">Charts</a></li>
-                            <li><a href="#" class="py-1 d-block">Privacy</a></li>
+                            <li><a href="{{ url('/') }}" class="py-1 d-block">Home</a></li>
+                            <li><a href="{{ url('/categorys') }}" class="py-1 d-block">Categorys</a></li>
+                            <li><a href="{{ url('/cart') }}" class="py-1 d-block">Carts</a></li>
+                            <li><a href="{{ url('/wishlist') }}" class="py-1 d-block">Wishlists</a></li>
+                            <li><a href="{{ url('/my-orders') }}" class="py-1 d-block">Orders</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 mb-md-0 mb-4 border-left">
@@ -46,13 +47,13 @@
                             <li><a href="#" class="py-1 d-block">Facebook</a></li>
                             <li><a href="#" class="py-1 d-block">Twitter</a></li>
                             <li><a href="#" class="py-1 d-block">Instagram</a></li>
-                            <li><a href="#" class="py-1 d-block">Googleplus</a></li>
+                            <li><a href="#" class="py-1 d-block">Whatsapp</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row partner-wrap mt-5">
+        {{-- <div class="row partner-wrap mt-5">
             <div class="col-md-12">
                 <div class="row align-items-center">
                     <div class="col">
@@ -73,13 +74,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row mt-5">
             <div class="col-md-6 col-lg-8">
-                    {{-- <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ion-ios-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                    <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ion-ios-heart" aria-hidden="true"></i> by <a href="{{ url('/')}}" target="_blank">Techsop.dz</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p> --}}
+                    </p>
             </div>
             <div class="col-md-6 col-lg-4 text-md-right">
                 <p class="mb-0 list-unstyled">

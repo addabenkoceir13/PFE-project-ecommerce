@@ -5,9 +5,9 @@
 @section('content')
     <div class="py-3 my-4 shadow-sm borfer-top bg-secondary p-2 text-dark bg-opacity-25">
         <div class="container">
-            <h5 class="mb-0">
-                <a href="{{ url('/') }}"> Home </a> /
-                <a href="{{ url('wishlist/') }} "> wishlist  </a>
+            <h5 class="mb-0 text-white" class="">
+                <a class="text-white" href="{{ url('/') }}"> Home </a> /
+                <a class="text-white" href="{{ url('wishlist/') }} "> wishlist  </a>
 
             </h5>
         </div>

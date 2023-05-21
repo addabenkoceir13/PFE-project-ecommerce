@@ -4,7 +4,7 @@
 
 @section('content')
     {{-- Start show products phones --}}
-    <h2>Featured Phones </h2>
+    <h2>Featured Phones And Computeurs</h2>
     <section style="background-color: #eee;">
         <div class="container py-5">
             <div class="row">

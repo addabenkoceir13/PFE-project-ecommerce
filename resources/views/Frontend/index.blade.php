@@ -5,27 +5,56 @@
 @section('content')
     @include('layouts.includes.Frontend.slider')
     {{--  --}}
-    <div class="row iphone-14 text-white mb-sm-5">
-        <div class="col col-ms-12 col-md-6 col-xl-6 d-flex jestify-content-center align-items-center">
-            <div class="text-iphone px-sm-2">
-                <h1>The iPhone 14 Pro </h1>
-                <p >
-                    Experience the ultimate smartphone with iPhone 14 Pro.
-                    With Dynamic Island and ProMotion technology,
-                    you'll enjoy unbeatable graphics and interactivity.
-                    Upgrade now and get guaranteed satisfaction with every purchase.
-                </p>
+    <section>
+        <div class="row iphone-14 text-white mb-sm-5">
+            <div class="col col-ms-12 col-md-6 col-xl-6 d-flex jestify-content-center align-items-center">
+                <div class="text-iphone px-sm-2">
+                    <h1>The iPhone 14 Pro </h1>
+                    <p >
+                        Experience the ultimate smartphone with iPhone 14 Pro.
+                        With Dynamic Island and ProMotion technology,
+                        you'll enjoy unbeatable graphics and interactivity.
+                        Upgrade now and get guaranteed satisfaction with every purchase.
+                    </p>
+                </div>
+            </div>
+            <div class="col-ms-12 col-md-6 col-xl-6 d-flex jestify-content-center align-items-center">
+
+                {{-- <spline-viewer url="https://prod.spline.design/dD2apikp00wYMKen/scene.splinecode"></spline-viewer> --}}
+                <iframe src='https://my.spline.design/iphone14procopy-f30bb7ad0bd1a8047011c763c00260b5/' frameborder='0' width='100%' height='100%'></iframe>
+                {{-- <img class="w-100" src="{{ asset('assets/Frontend/home/mockrocket-export.gif')}}"  alt=""> --}}
             </div>
         </div>
-        <div class="col-ms-12 col-md-6 col-xl-6 d-flex jestify-content-center align-items-center">
-            <img class="w-100" src="{{ asset('assets/Frontend/home/mockrocket-export.gif')}}"  alt="">
+    </section>
+    {{--  --}}
+
+    {{--  --}}
+    <section class="laptop">
+        <div class="row ">
+            <div class="col-ms-12 col-md-6 col-xl-6 d-flex justify-content-center align-items-center">
+                <iframe src='https://my.spline.design/macbookprocopy-e961740adfc2a47aa2586c66df390430/' frameborder='0' width='100%' height='100%'></iframe>
+            </div>
+            <div class="col col-ms-12 col-md-6 col-xl-6 d-flex justify-content-center align-items-center">
+                <div class="text-iphone px-sm-2">
+                    <h1>The MacBook Pro M1 Max </h1>
+                    <p >
+                        With the MacBook Pro M1 Max, you can unleash unbounded creativity and unrivaled power,
+                        transforming the way you work, create, and succeed in a world where possibilities know no bounds.
+                        </p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+    {{--  --}}
+
     {{-- Start show products phones --}}
-    <h2>Featured Product Phones  </h2>
-    <p class="text-center">
-        Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </p>
+    <section class="my-5">
+        <h2>Featured Product </h2>
+        <p class="text-center">
+            The best-selling and top-rated goods on our website and in our shop, don't lose out on the chance to go and buy what best suits you.
+        </p>
+    </section>
+
 <section style="background-color: #eee;">
     <div class="container py-5">
         <div class="row">
@@ -112,10 +141,10 @@
 
 
 
-
 @endsection
 
 @section('scripts')
+<script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.339/build/spline-viewer.js"></script>
 <script>
     $('.owl-carousel').owlCarousel({
     loop:true,

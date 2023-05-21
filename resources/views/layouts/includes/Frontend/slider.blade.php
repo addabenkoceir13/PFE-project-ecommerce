@@ -3,9 +3,6 @@
 
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="{{ asset('assets/Frontend/home/logo-techshop.png')}}" class="d-block w-100" alt="Logo page 01">
-        </div>
-        <div class="carousel-item">
             <img src="{{ asset('assets/Frontend/A14plus1.0.jpeg')}}" class="d-block w-100" alt="Image 02">
             <div class="carousel-caption d-none d-md-block">
                 <h5>iPhone 14 </h5>

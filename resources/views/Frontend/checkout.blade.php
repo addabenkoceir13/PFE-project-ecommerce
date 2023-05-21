@@ -107,6 +107,40 @@
                                                 To secure your products, please pay 20% of the total transaction price.
                                                 Thank you very much for putting your faith in us. You are always welcome in our store.
                                             </div>
+                                            <div style="border-left: 5px solid rgb(20, 20, 20); " class="alert alert-light   ">
+                                                <div style="background: #eee; width: 350px; border-radius: 10px;" class="py-1 my-1">
+                                                    <img src="{{ asset('assets/Frontend/icon/baridmob.png')}}" class="mx-3 " width="80px" alt="logo baridmob">
+                                                    <b>RIP: </b> <span id="rip">007 99999 002444973573</span>
+                                                    <span style="cursor: pointer; font-size: 18px" id="copy-btn-rip" class="bg-dark text-white rounded mx-3 p-1">
+                                                        <i class="bi bi-clipboard"></i>
+                                                    </span>
+                                                </div>
+                                                <div style="background: #eee;  border-radius: 10px;" class="row py-1 mt-3">
+                                                    <div class="col-sm-2 col-md-2">
+                                                        <img src="{{ asset('assets/Frontend/icon/logo-round.png')}}" width="80px" alt="Logo Algeria poste">
+                                                    </div>
+                                                    <div class="col-sm-8 col-md-8">
+                                                        <b>CCP: </b><span id="ccp"> 0024449735</span>
+                                                        <span style="cursor: pointer" id="copy-btn-ccp" class="bg-dark text-white rounded mx-3 p-1">
+                                                            <i class="bi bi-clipboard"></i>
+                                                        </span>
+                                                        <b>Cle: </b><span id="cle"> 73</span>
+                                                        <span style="cursor: pointer" id="copy-btn-cle" class="bg-dark text-white rounded mx-3 p-1">
+                                                            <i class="bi bi-clipboard"></i>
+                                                        </span>
+                                                        <br>
+                                                        <b>Compane: </b><span id="compane"> TechShop Dz</span>
+                                                        <span style="cursor: pointer" id="copy-btn-compane" class="bg-dark text-white rounded mx-3 p-1">
+                                                            <i class="bi bi-clipboard"></i>
+                                                        </span>
+                                                        <br>
+                                                        <b>Address: </b><span id="address"> N15 RUE DE LA MOSQUE AIN MERANE</span>
+                                                        <span style="cursor: pointer" id="copy-btn-address" class="bg-dark text-white rounded mx-3 p-1">
+                                                            <i class="bi bi-clipboard"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                                 <div class="image-upload-wrap">
                                                     <input type="file" name="image" class="form-contro file-upload-inputl @error('image') is-invalid @enderror" onchange="readURL(this);" accept="image/*" placeholder="Please Choose">
                                                     @error('image')
@@ -210,10 +244,11 @@
     }
     }
 
-    function removeUpload() {
-    $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-    $('.file-upload-content').hide();
-    $('.image-upload-wrap').show();
+    function removeUpload()
+    {
+        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+        $('.file-upload-content').hide();
+        $('.image-upload-wrap').show();
     }
     $('.image-upload-wrap').bind('dragover', function () {
         $('.image-upload-wrap').addClass('image-dropping');
@@ -221,5 +256,69 @@
     $('.image-upload-wrap').bind('dragleave', function () {
         $('.image-upload-wrap').removeClass('image-dropping');
     });
+
+    // Buttons Copys
+    // button copy RIP
+    var copybtnrip  = document.getElementById("copy-btn-rip");
+    var rip         = document.getElementById("rip");
+
+    copybtnrip.onclick = function (){
+        navigator.clipboard.writeText(rip.innerHTML);
+        copybtnrip.innerHTML = '<i class="bi bi-clipboard-check"></i>'
+        setTimeout(() => {
+            copybtnrip.innerHTML = '<i class="bi bi-check-all"></i>'
+        }, 2000);
+    }
+    // button copy CCp
+    var copybtnccp = document.getElementById("copy-btn-ccp");
+    var ccp = document.getElementById("ccp");
+
+    copybtnccp.onclick = function ()
+    {
+        navigator.clipboard.writeText(ccp.innerHTML);
+        copybtnccp.innerHTML = '<i class="bi bi-clipboard-check"></i>'
+        setTimeout(() => {
+            copybtnccp.innerHTML = '<i class="bi bi-check-all"></i>'
+        }, 2000);
+    }
+
+    // button copy Cle
+    var copybtncle = document.getElementById("copy-btn-cle");
+    var cle = document.getElementById("cle");
+
+    copybtncle.onclick = function ()
+    {
+        navigator.clipboard.writeText(cle.innerHTML);
+        copybtncle.innerHTML = '<i class="bi bi-clipboard-check"></i>'
+        setTimeout(() => {
+            copybtncle.innerHTML = '<i class="bi bi-check-all"></i>'
+        }, 2000);
+    }
+    // button copy Compane
+    var copybtncompane = document.getElementById("copy-btn-compane");
+    var compane = document.getElementById("compane");
+
+    copybtncompane.onclick = function ()
+    {
+        navigator.clipboard.writeText(compane.innerHTML);
+        copybtncompane.innerHTML = '<i class="bi bi-clipboard-check"></i>'
+        setTimeout(() => {
+            copybtncompane.innerHTML = '<i class="bi bi-check-all"></i>'
+        }, 2000);
+    }
+    // button copy address
+    var copybtnaddress = document.getElementById("copy-btn-address");
+    var address = document.getElementById("address");
+
+    copybtnaddress.onclick = function ()
+    {
+        navigator.clipboard.writeText(address.innerHTML);
+        copybtnaddress.innerHTML = '<i class="bi bi-clipboard-check"></i>'
+        setTimeout(() => {
+            copybtnaddress.innerHTML = '<i class="bi bi-check-all"></i>'
+        }, 2000);
+    }
+
+
 </script>
 @endsection
