@@ -109,12 +109,12 @@
             <canvas id="myChart" width="200" height="100"></canvas>
         </div>
     </div>
-    {{-- <div class="card border-0 mt-5">
+    <div class="card border-0 mt-5">
         <div class="card-body">
-            <h1>Vertical sales graph for the year</h1>
-            <canvas id="myChartcirle" width="200" height="100"></canvas>
+            <h1>The proportion of the top ten yearly sales</h1>
+            <canvas id="myChartcirle" width="100px" height="100"></canvas>
         </div>
-    </div> --}}
+    </div>
 @endsection
 
 @section('scripts')
@@ -146,21 +146,28 @@
         }
     });
      // ----------------------------- JAV Pie chart service appiotment -----------------------------------------------------------------------
+    var results = @json($results);
+
     const ctxc = document.getElementById('myChartcirle').getContext('2d');
     const myChartcirle = new Chart(ctxc, {
         type: 'pie',
         data: {
-            labels: ['Cardiology', 'Radiology Specialized Medical imaging', 'Emergency Intensive Care', 'Vascular Medicine and Call Vascular', 'Medical analysis laboratory', 'Dental Surgery'],
+            labels: [results[0].name_prod,results[1].name_prod,results[2].name_prod,results[3].name_prod,results[4].name_prod,results[5].name_prod,results[6].name_prod,results[7].name_prod,results[8].name_prod,results[9].name_prod],
             datasets: [{
                 label: '# of Votes',
-                data: [20,50,78,50,50,0],
+                data: [results[0].total_quantity,results[1].total_quantity,results[2].total_quantity,results[3].total_quantity,results[4].total_quantity,results[5].total_quantity,results[6].total_quantity,results[7].total_quantity,results[8].total_quantity,results[9].total_quantity],
                 backgroundColor: [
                     '#4663BE',
                     '#8DBAFE',
                     '#21AEE4',
                     '#e9ebed',
                     '#96AB3D',
-                    '#aed36c'
+                    '#aed36c',
+                    '#262626',
+                    '#ACBFA4',
+                    '#E2E8CE',
+                    '#FF7F11',
+                    '#FF1B1C'
                 ],
                 borderColor: [
                     'rgba(54, 162, 235, 1)'

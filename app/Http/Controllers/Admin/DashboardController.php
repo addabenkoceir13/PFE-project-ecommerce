@@ -11,13 +11,22 @@ use App\Models\Review;
 use App\Models\Suppliers;
 use App\Models\User;
 use App\Models\Wishlist;
-use Facade\FlareClient\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        $results = DB::table('products')
+                    ->join('invoices', 'products.id', '=', 'invoices.id_prod')
+                    ->select('products.id', 'products.name_prod', DB::raw('SUM(invoices.qty_prod) as total_quantity'))
+                    ->groupBy('products.id', 'products.name_prod')
+                    ->orderByDesc('total_quantity')
+                    ->limit(10)
+                    ->get();
+
+
         $users      = User::all()->count();
         $suppliers  = Suppliers::all()->count();
         $reviews    = Review::all()->count();
@@ -44,6 +53,7 @@ class DashboardController extends Controller
             'orderNoCon'=> $orderNoCon,
             'invoices'  => $invoices,
             'wishlists' => $wishlists,
+            'results'   => $results,
         ];
 
 

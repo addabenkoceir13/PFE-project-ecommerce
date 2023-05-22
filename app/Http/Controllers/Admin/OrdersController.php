@@ -8,6 +8,7 @@ use App\Models\Invoices;
 use App\Models\Order;
 use App\Models\Orders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class OrdersController extends Controller
@@ -26,6 +27,7 @@ class OrdersController extends Controller
 
     public function updateorder(Request $request, $id)
     {
+
         $order = Order::find($id);
         $invoices = Invoices::where('id_order',$id )->first();
 
@@ -53,6 +55,7 @@ class OrdersController extends Controller
                 'updated_at'    => $order->updated_at,
                 'sum_paid'      => $sumPait,
                 "num_invoice"   => $invoices->num_invoice,
+
             ];
             Mail::to($order->email)->send(new OrderConfirmationEmail($data, $order));
 
