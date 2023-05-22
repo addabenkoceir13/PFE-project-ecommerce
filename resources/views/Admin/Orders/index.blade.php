@@ -37,7 +37,7 @@
                             <td>{{ $item->fname .' '. $item->lname}}</td>
                             <td>{{ $item->tracking_no}}</td>
                             <td>{{ $item->created_at->format('d M Y')}}</td>
-                            <td>{{ $item->price_total}}</td>
+                            <td>{{ $item->price_total}} DZ</td>
                             <td>{{ $item->status == '0' ? 'Pending' : 'Completed'}}</td>
                             <td> <img src="{{ asset('assets/uploads/ccp/'. $item->image)}}" width="120px" alt="{{ $item->image}}"></td>
                             <td>

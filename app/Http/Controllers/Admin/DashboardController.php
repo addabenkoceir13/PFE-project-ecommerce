@@ -45,6 +45,8 @@ class DashboardController extends Controller
             'invoices'  => $invoices,
             'wishlists' => $wishlists,
         ];
+
+
         return view('admin.dashboard.index', $data);
     }
 }

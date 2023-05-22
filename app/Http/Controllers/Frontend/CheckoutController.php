@@ -11,8 +11,7 @@ use App\Models\Orders;
 use App\Models\Products;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Traits;
-
+use Illuminate\Support\Str;
 class CheckoutController extends Controller
 {
     use UploadPhotos;
@@ -74,22 +73,24 @@ class CheckoutController extends Controller
 
 
         $Cartsitems = Orders::where('id_user', Auth::id())->get();
+
+        $total_price = $request->input('price_total');
+        $randomString = '#'. strtoupper(Str::random(5));
+
         foreach ($Cartsitems as $item)
         {
             Invoices::create([
-                'id_order'  => $order->id,
-                'id_prod'    => $item->id_prod,
-                'qty_prod'   => $item->qty_prod,
+                'id_order'      => $order->id,
+                'id_prod'       => $item->id_prod,
+                'qty_prod'      => $item->qty_prod,
+                'total_price'   => $total_price,
+                'num_invoice'   => $randomString,
             ]);
 
             $prod = Products::where('id', $item->id_prod)->first();
             $prod->qte_stock = $prod->qte_stock - $item->qty_prod;
             $prod->update();
         }
-
-            $invoices = Invoices::where('id_order', $order->id)->first();
-            $invoices->total_price = $request->input('price_total');
-            $invoices->update();
 
         if(Auth::user()->address2 != $request->input('address2'))
         {

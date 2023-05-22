@@ -27,8 +27,7 @@ class OrdersController extends Controller
     public function updateorder(Request $request, $id)
     {
         $order = Order::find($id);
-        $orders = Invoices::where('id_order',$id )->first();
-        $products_ids = $orders->pluck('id_prod')->toArray();
+        $invoices = Invoices::where('id_order',$id )->first();
 
 
         // Update status order
@@ -53,6 +52,7 @@ class OrdersController extends Controller
                 'tracking_no'   => $order->tracking_no,
                 'updated_at'    => $order->updated_at,
                 'sum_paid'      => $sumPait,
+                "num_invoice"   => $invoices->num_invoice,
             ];
             Mail::to($order->email)->send(new OrderConfirmationEmail($data, $order));
 

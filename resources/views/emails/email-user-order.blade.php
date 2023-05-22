@@ -35,7 +35,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="invoice-title">
-                                <h4 class="float-end font-size-15">Invoice #DS0204 <span class="badge bg-success font-size-12 ms-2">Paid</span></h4>
+                                <h4 class="float-end font-size-15">Invoice {{ $data['num_invoice']}} <span class="badge bg-success font-size-12 ms-2">Paid</span></h4>
                                 <div class="mb-4">
                                     <h2 class="mb-1 text-muted">TechShop.dz</h2>
                                 </div>
@@ -66,7 +66,7 @@
                                     <div class="text-muted text-sm-end">
                                         <div>
                                             <h5 class="font-size-15 mb-1">Invoice No:</h5>
-                                            <p>#DZ0112</p>
+                                            <p>{{ $data['num_invoice']}}</p>
                                         </div>
                                         <div class="mt-4">
                                             <h5 class="font-size-15 mb-1">Invoice Date:</h5>

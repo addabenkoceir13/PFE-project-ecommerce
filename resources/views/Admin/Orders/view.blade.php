@@ -75,9 +75,9 @@
                                 <td>{{ $item->products->name_prod }}</td>
                                 <td>{{ $item->qty_prod }}</td>
                                 @if ($item->products->selling_price > 0)
-                                    <td>{{ $item->products->selling_price }}</td>
+                                    <td>{{ $item->products->selling_price }} DZ</td>
                                 @else
-                                    <td>{{ $item->products->original_price }}</td>
+                                    <td>{{ $item->products->original_price }} DZ</td>
                                 @endif
                                 <td>
                                     <img src="{{ asset('assets/uploads/products/'. $item->products->image) }}" width="80px" alt="{{ 'image'.$item->products->image}}">
@@ -87,7 +87,7 @@
                     </tbody>
                 </table>
                 <hr class="my-2">
-                <h4 class="px-2">Grand Total: <span class="float-end">{{ $orders->price_total }}</span> </h4>
+                <h4 class="px-2">Grand Total: <span class="float-end">{{ $orders->price_total }} DZ</span> </h4>
                 <hr class="my-2">
                 <form action="{{ url('update-order/'.$orders->id)}}" method="POST">
                     @csrf
