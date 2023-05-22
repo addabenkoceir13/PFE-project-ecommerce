@@ -18,8 +18,6 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('id_prod');
             $table->bigInteger('id_user');
             $table->bigInteger('qty_prod');
-            $table->string('name_prod');
-            $table->float('total_price');
             $table->tinyInteger('status')->default('0');
             $table->string('tracking_no');
 

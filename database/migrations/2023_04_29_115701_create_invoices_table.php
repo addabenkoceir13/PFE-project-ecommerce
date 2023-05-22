@@ -19,6 +19,7 @@ class CreateInvoicesTable extends Migration
             $table->bigInteger('id_prod');
             $table->bigInteger('qty_prod');
             $table->bigInteger('total_price');
+            $table->string('num_invoice');
             $table->timestamps();
         });
     }

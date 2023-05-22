@@ -10,9 +10,9 @@
     <div class="card border-0">
         <div class="header-body row">
             <div class="col-md-12">
-                <h1>New Orders
+                <h4>New Orders
                     <a href="{{ url('order-history') }}" class="btn btn-dark float-end">Order History</a>
-                </h1>
+                </h4>
             </div>
 
         </div>

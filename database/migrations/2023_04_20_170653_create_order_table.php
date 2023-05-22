@@ -27,11 +27,11 @@ class CreateOrderTable extends Migration
             $table->string('state');
             $table->string('pincode');
             $table->string('image');
-            $table->string('mode_payment');
-            $table->string('id_payment')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->string('message')->nullable();
             $table->string('tracking_no');
+            $table->string('mode_payment');
+            $table->string('id_payment')->nullable();
             $table->timestamps();
         });
     }

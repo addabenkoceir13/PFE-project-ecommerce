@@ -99,6 +99,10 @@
                             <option {{ $orders->status == '1' ? 'selected': ''}} value="1">Completed</option>
                         </select>
                     </div>
+                    <div class="mt-3">
+                        <label class="form-label">The sum paid</label>
+                        <input type="tel" class="form-control" pattern="[0-9]\w{2,16}" name="sum_paid"  title="pleas enter your the sum paid number" placeholder="The sum paid" required>
+                    </div>
                     <div class="d-grid grap-2 mt-3">
                         <button type="submit" class="btn btn-outline-dark">Save</button>
                     </div>

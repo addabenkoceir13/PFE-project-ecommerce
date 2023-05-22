@@ -131,6 +131,18 @@
                                             <!-- end tr -->
                                             <tr>
                                                 <th scope="row" colspan="5" class="border-0 text-end">
+                                                    sum pait :</th>
+                                                <td class="border-0 text-end">{{ $data['sum_paid'] }} DZ</td>
+                                            </tr>@php
+                                                $sumremaining = $data['price_total'] - $data['sum_paid'] ;
+                                            @endphp
+                                            <tr>
+                                                <th scope="row" colspan="5" class="border-0 text-end">
+                                                    sum remaining  :</th>
+                                                <td class="border-0 text-end"> {{ $sumremaining  }} DZ</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" colspan="5" class="border-0 text-end">
                                                     TVA :</th>
                                                 <td class="border-0 text-end">00.00 DZ</td>
                                             </tr>
@@ -143,7 +155,7 @@
                                             <!-- end tr -->
                                             <tr>
                                                 <th scope="row" colspan="5" class="border-0 text-end">Total</th>
-                                                <td class="border-0 text-end"><h4 class="m-0 fw-semibold">{{ $data['price_total'] }} DZ</h4></td>
+                                                <td class="border-0 text-end"><h4 class="m-0 fw-semibold">{{ $sumremaining }} DZ</h4></td>
                                             </tr>
                                             <!-- end tr -->
                                         </tbody><!-- end tbody -->

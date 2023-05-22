@@ -42,5 +42,17 @@
     </script>
 @endif
 
+@if (session('statusalert'))
+    <script>
+        Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: "{{ session('statusalert') }}",
+        showConfirmButton: false,
+        timer: 5500
+        })
+    </script>
+@endif
+
 </body>
 </html>

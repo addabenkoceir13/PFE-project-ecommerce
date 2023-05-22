@@ -23,8 +23,9 @@ class CreateProductsTable extends Migration
             $table->float('selling_price');
             $table->bigInteger('qte_stock');
             $table->float('tax');
-            $table->string('color');
-            $table->string('storage');
+            $table->text('color');
+            $table->text('storage');
+            $table->tinyInteger('status')->default('0');
             $table->string('image');
             $table->longText('description');
             $table->longText('small_descripton');

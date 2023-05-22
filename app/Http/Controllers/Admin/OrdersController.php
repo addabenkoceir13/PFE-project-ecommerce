@@ -33,6 +33,7 @@ class OrdersController extends Controller
 
         // Update status order
         $status = $request->input('order_status');
+        $sumPait = $request->input("sum_paid");
         $order->status = $status;
         $order->update();
 
@@ -51,16 +52,16 @@ class OrdersController extends Controller
                 'price_total'   => $order->price_total,
                 'tracking_no'   => $order->tracking_no,
                 'updated_at'    => $order->updated_at,
+                'sum_paid'      => $sumPait,
             ];
             Mail::to($order->email)->send(new OrderConfirmationEmail($data, $order));
 
             return redirect('orders')->with("status", 'order Updated and Email sent Successfully');
-
         }
-
-
-        return redirect('orders')->with("status", 'order Updated Successfully');
-
+        else
+        {
+            return redirect('orders')->with("statusalert", 'No students are confirmed or canceled .');
+        }
     }
 
     public function historyorder()

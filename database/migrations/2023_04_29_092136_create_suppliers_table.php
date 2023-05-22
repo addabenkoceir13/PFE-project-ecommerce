@@ -19,9 +19,13 @@ class CreateSuppliersTable extends Migration
             $table->string('lname');
             $table->string('email');
             $table->integer('phone');
-            $table->integer('fax');
+            $table->string('image');
             $table->string('address');
             $table->text('description');
+            $table->float("let");
+            $table->float("lng");
+            $table->string("location");
+            $table->integer("rating");
             $table->timestamps();
         });
     }
