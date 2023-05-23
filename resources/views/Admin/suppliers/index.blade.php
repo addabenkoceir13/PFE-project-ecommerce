@@ -133,14 +133,14 @@
                                 <hr class="mt-5 ">
                                 <div class="d-flex ">
                                     <p>
-                                        @for ($i = 1; $i <= $item->rating ; $i++)
+                                        @for ($i = 1; $i <= $item->ratings->rating ; $i++)
                                             <i class="fa fa-star text-warning"></i>
                                         @endfor
-                                        @for ($j = $item->rating+1; $j <= 5; $j++)
+                                        @for ($j = $item->ratings->rating+1; $j <= 5; $j++)
                                             <i class="bi bi-star text-secondary"></i>
                                         @endfor
-                                        @if ($item->rating > 0)
-                                            <span class="text-muted"> {{ $item->rating }} Rating</span>
+                                        @if ($item->ratings->rating > 0)
+                                            <span class="text-muted"> {{ $item->ratings->rating }} Rating</span>
                                         @else
                                             <span class="text-muted"> 0 Rating</span>
                                         @endif

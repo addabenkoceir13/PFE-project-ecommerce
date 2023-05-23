@@ -190,6 +190,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     //
     Route::post('update-supplier/{id}', [SuppliersController::class, 'updateSupplier']);
     //
+    Route::post('rating-suppliers', [SuppliersController::class, 'ratings']);
+    //
     Route::get('send-email-suppliers/{id}',[SuppliersController::class, 'viewForm']);
     //
     // Route::get('send-email', [SuppliersController::class , 'SendEmail']);

@@ -14,10 +14,10 @@
 
             </div>
         </div>
-        @if (count($recommendedSuppliers) > 0 )
+        @if (count($topsuppliers) > 0 )
             {{--Start Card Suppliers --}}
-            <div class="row">
-                @foreach ($recommendedSuppliers as $item)
+            {{-- <div class="row">
+                @foreach ($topsuppliers as $item)
                     <div class="col-sm-12 col-md-6 col-xl-4 mt-2">
                         <div class="card p-1 h-100 remove-data" data-item="{{ $item }}" id="card-supplier">
                             <div class="card-body ">
@@ -80,7 +80,7 @@
                                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal{{ $item->id }}">
                                         <i class="bi bi-person-dash-fill"></i>
                                     </button>
-                                    {{-- Start Modal for deleted supplier --}}
+                                    {{-- Start Modal for deleted supplier --}
                                     <div class="modal fade" id="confirmDeleteModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -102,14 +102,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- End modal for deleted supplier --}}
+                                    {{-- End modal for deleted supplier --}
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
-            </div>
+            </div> --}}
         {{--End  Card Suppliers --}}
+        @foreach ($providers as $provider)
+            <div>
+                <h3>{{ $provider->name }}</h3>
+                <p>Average Rating: {{ $provider->average_rating }}</p>
+            </div>
+        @endforeach
         @else
             {{-- Start card no suppliers --}}
             <div class="card border-0">

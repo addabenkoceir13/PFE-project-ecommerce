@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\UploadPhotos;
 use App\Mail\ContactMail;
+use App\Models\Rating;
 use App\Models\Suppliers;
 use App\Notifications\SuppliersEmail;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
@@ -23,6 +25,24 @@ class SuppliersController extends Controller
     {
         $suppliers = Suppliers::all();
         return view('admin.suppliers.index',compact('suppliers'));
+    }
+
+    public function recommendSuppliers()
+    {
+
+        $topProviders = DB::table('ratings')
+                            ->join('suppliers', 'ratings.id_supp', '=', 'suppliers.id')
+                            ->select('suppliers.id', 'suppliers.fname', DB::raw('AVG(ratings.rating) as average_rating'))
+                            ->groupBy('suppliers.id', 'suppliers.fname')
+                            ->orderByDesc('average_rating')
+                            ->limit(5)
+                            ->get();
+
+
+
+        return view('admin.suppliers.top', [
+            'providers' => $topProviders,
+        ]);
     }
 
     public function insert(Request $request)
@@ -197,6 +217,35 @@ class SuppliersController extends Controller
         $suppliers = Suppliers::find($id);
         return view('admin.contect.supplier' , compact('suppliers'));
 
+    }
+
+    public function ratings(Request $request)
+    {
+        $check_rating = Rating::where('id_supp', $request->id_supp)->exists();
+        if (!$check_rating)
+        {
+            $rating = new Rating();
+            $rating->id_admin = $request->id_admin;
+            $rating->id_supp = $request->id_supp;
+            $rating->rating  =$request->suppliers_rating;
+            $rating->save();
+
+            return redirect()->back()->with('status', "Rating suppliers successfuly");
+        }
+        else
+        {
+            $rating_update = Rating::where('id_supp',$request->id_supp)->first();
+
+            $rating_update->rating  = $request->suppliers_rating;
+            $rating_update->update();
+
+            return redirect()->back()->with('status', "Rating update suppliers successfuly");
+
+        }
+
+
+
+        return redirect()->back()->with('status', "Rating suppliers successfuly");
     }
 
     public function SendEmailSuppliers(Request $request)

@@ -25,4 +25,9 @@ class Suppliers extends Model
         'location',
         'rating',
     ];
+
+    public function ratings()
+    {
+        return $this->belongsTo(Rating::class, 'id', 'id_supp');
+    }
 }

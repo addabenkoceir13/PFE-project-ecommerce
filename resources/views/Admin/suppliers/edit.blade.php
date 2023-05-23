@@ -97,37 +97,24 @@
                     </div>
                 {{-- Start star rating --}}
                 <div class="col-md-12 d-flex justify-content-center my-4">
-                    <div class="rating-css">
-                        <div class="star-icon">
-                            @if ($supplier->rating)
-                                @for ($i = 1; $i <= $supplier->rating ; $i++)
-                                    <input type="radio" value="{{$i}}" name="supplier_rating" checked id="rating{{$i}}">
-                                    <label for="rating{{$i}}" class="fa fa-star"></label>
-                                @endfor
-                                @for ($j = $supplier->rating+1; $j <= 5; $j++)
-                                    <input type="radio" value="{{$j}}" name="supplier_rating"  id="rating{{$j}}">
-                                    <label for="rating{{$j}}" class="bi bi-star  "></label>
-                                @endfor
+                {{-- Start button model rating --}}
+                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            @php $ratenum = $supplier->ratings->rating; @endphp
+                            @for ($i = 1; $i <= $ratenum ; $i++)
+                                <i class="fa fa-star text-warning"></i>
+                            @endfor
+                            @for ($j = $ratenum+1; $j <= 5; $j++)
+                                <i class="bi bi-star text-secondary"></i>
+                            @endfor
+                            @if ($ratenum > 0)
+                                <span class="list-inline-item ">{{ $ratenum }} Rating</span>
                             @else
-                                <input type="radio" value="1" name="supplier_rating" checked  id="rating1">
-                                <label for="rating1" class="fa fa-star"></label>
-                                <input type="radio" value="2" name="supplier_rating" id="rating2">
-                                <label for="rating2" class="fa fa-star"></label>
-                                <input type="radio" value="3" name="supplier_rating" id="rating3">
-                                <label for="rating3" class="fa fa-star"></label>
-                                <input type="radio" value="4" name="supplier_rating" id="rating4">
-                                <label for="rating4" class="fa fa-star"></label>
-                                <input type="radio" value="5" name="supplier_rating" id="rating5">
-                                <label for="rating5" class="fa fa-star"></label>
+                                <span class="list-inline-item ">No Rating  </span>
                             @endif
-                        </div>
-                    </div>
+
+                    </button>
+                {{-- end button model rating --}}
                 </div>
-                {{-- end star rating --}}
-
-
-                </div>
-
                 <div class="mt-5 text-center">
                     <button class="btn btn-outline-dark profile-button" type="submit">Save Profile</button>
                 </div>
@@ -138,6 +125,55 @@
 </div>
 </div>
 </div>
+{{-- start model rating --}}
+<form action="{{ url('rating-suppliers')}}"   method="post">
+    @csrf
+        <input type="hidden" name="id_supp"  value="{{ $supplier->id }}">
+        <input type="hidden" name="id_admin" value="{{ Auth::user()->id }}">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Rate  </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="rating-css">
+                            <div class="star-icon">
+                                @if($supplier->rating)
+                                    @for ($i = 1; $i <= $supplier->ratings->rating ; $i++)
+                                        <input type="radio" value="{{$i}}" name="suppliers_rating" checked id="rating{{$i}}">
+                                        <label for="rating{{$i}}" class="fa fa-star"></label>
+                                    @endfor
+                                    @for ($j = $supplier->ratings->rating+1; $j <= 5; $j++)
+                                        <input type="radio" value="{{$j}}" name="suppliers_rating"  id="rating{{$j}}">
+                                        <label for="rating{{$j}}" class="fa bi-star "></label>
+                                    @endfor
+                                @else
+                                    <input type="radio" value="1" name="suppliers_rating" checked  id="rating1">
+                                    <label for="rating1" class="fa fa-star"></label>
+                                    <input type="radio" value="2" name="suppliers_rating" id="rating2">
+                                    <label for="rating2" class="fa fa-star"></label>
+                                    <input type="radio" value="3" name="suppliers_rating" id="rating3">
+                                    <label for="rating3" class="fa fa-star"></label>
+                                    <input type="radio" value="4" name="suppliers_rating" id="rating4">
+                                    <label for="rating4" class="fa fa-star"></label>
+                                    <input type="radio" value="5" name="suppliers_rating" id="rating5">
+                                    <label for="rating5" class="fa fa-star"></label>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark rating-now">Rating now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{{-- end model rating --}}
 @endsection
 
 @section('scripts')
@@ -183,38 +219,38 @@
     });
 
 
-        // Change photo profile
-        function readURL(input) {
-            if (input.files && input.files[0]) {
+    // Change photo profile
+    function readURL(input) {
+        if (input.files && input.files[0]) {
 
-            var reader = new FileReader();
+        var reader = new FileReader();
 
-            reader.onload = function(e) {
-                $('.image-upload-wrap').hide();
+        reader.onload = function(e) {
+            $('.image-upload-wrap').hide();
 
-                $('.file-upload-image').attr('src', e.target.result);
-                $('.file-upload-content').show();
+            $('.file-upload-image').attr('src', e.target.result);
+            $('.file-upload-content').show();
 
-                $('.image-title').html(input.files[0].name);
-            };
+            $('.image-title').html(input.files[0].name);
+        };
 
-            reader.readAsDataURL(input.files[0]);
+        reader.readAsDataURL(input.files[0]);
 
-            } else {
-            removeUpload();
-            }
+        } else {
+        removeUpload();
         }
+    }
 
-        function removeUpload() {
-            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-            $('.file-upload-content').hide();
-            $('.image-upload-wrap').show();
-        }
-        $('.image-upload-wrap').bind('dragover', function () {
-            $('.image-upload-wrap').addClass('image-dropping');
-            });
-            $('.image-upload-wrap').bind('dragleave', function () {
-            $('.image-upload-wrap').removeClass('image-dropping');
-  });
+    function removeUpload() {
+        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+        $('.file-upload-content').hide();
+        $('.image-upload-wrap').show();
+    }
+    $('.image-upload-wrap').bind('dragover', function () {
+        $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function () {
+        $('.image-upload-wrap').removeClass('image-dropping');
+});
     </script>
 @endsection
