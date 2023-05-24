@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\UploadPhotos;
 use App\Mail\ContactMail;
+use App\Models\Products;
 use App\Models\Rating;
 use App\Models\Suppliers;
 use App\Notifications\SuppliersEmail;
@@ -32,8 +33,10 @@ class SuppliersController extends Controller
 
         $topProviders = DB::table('ratings')
                             ->join('suppliers', 'ratings.id_supp', '=', 'suppliers.id')
-                            ->select('suppliers.id', 'suppliers.fname', DB::raw('AVG(ratings.rating) as average_rating'))
-                            ->groupBy('suppliers.id', 'suppliers.fname')
+                            ->select('suppliers.id', 'suppliers.fname','suppliers.lname','suppliers.email', 'suppliers.phone', 'suppliers.address','suppliers.image',
+                            'suppliers.location', 'suppliers.created_at',
+                            DB::raw('AVG(ratings.rating) as average_rating'))
+                            ->groupBy('suppliers.id', 'suppliers.fname','suppliers.lname','suppliers.email', 'suppliers.phone', 'suppliers.address','suppliers.image', 'suppliers.location', 'suppliers.created_at')
                             ->orderByDesc('average_rating')
                             ->limit(5)
                             ->get();
@@ -41,7 +44,7 @@ class SuppliersController extends Controller
 
 
         return view('admin.suppliers.top', [
-            'providers' => $topProviders,
+            'topProviders' => $topProviders,
         ]);
     }
 
@@ -246,6 +249,12 @@ class SuppliersController extends Controller
 
 
         return redirect()->back()->with('status', "Rating suppliers successfuly");
+    }
+
+    public function prodsuppliers()
+    {
+        $prod_suppliers = Products::all();
+        return view('admin.suppliers.products-suppliers' , compact('prod_suppliers'));
     }
 
     public function SendEmailSuppliers(Request $request)

@@ -23,6 +23,8 @@
             <i class="mx-2 bi bi-person-add"></i>Top Suppliers</a>
         <a class="list-group-item list-group-item-action list-group-item-w  p-3 {{ Request::is('suppliers') ? 'active':''; }}" href="{{ url('suppliers')}}">
             <i class="mx-2 bi bi-person-add"></i> Suppliers</a>
+        <a class="list-group-item list-group-item-action list-group-item-w  p-3 {{ Request::is('products-suplliers') ? 'active':''; }}" href="{{ url('products-suplliers')}}">
+            <i class="mx-2 bi bi-box-seam"></i>Products Suppliers</a>
         <a class="list-group-item list-group-item-action list-group-item-w  p-3 {{ Request::is('map') ? 'active':'';}}" href="{{ url('map')}}">
             <i class="mx-2 bi bi-map"></i> Map </a>
 </div>

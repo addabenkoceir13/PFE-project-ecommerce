@@ -11,15 +11,15 @@
         <div class="header-body row">
             <div class="col-md-12 d-flex justify-content-between">
                 <h3>New Suppliers </h3>
-
             </div>
         </div>
-        @if (count($topsuppliers) > 0 )
+        @if (count($topProviders) > 0 )
             {{--Start Card Suppliers --}}
-            {{-- <div class="row">
-                @foreach ($topsuppliers as $item)
+            <div class="row">
+                @foreach ($topProviders as $item)
+                @if ($item->average_rating >= 3)
                     <div class="col-sm-12 col-md-6 col-xl-4 mt-2">
-                        <div class="card p-1 h-100 remove-data" data-item="{{ $item }}" id="card-supplier">
+                        <div class="card p-1 h-100 remove-data"  id="card-supplier">
                             <div class="card-body ">
                                 <div class=" image d-flex flex-column justify-content-center align-items-center">
                                     @if ($item->image > 0 )
@@ -54,14 +54,14 @@
                                 <hr class="mt-5 ">
                                 <div class="d-flex ">
                                     <p>
-                                        @for ($i = 1; $i <= $item->rating ; $i++)
+                                        @for ($i = 1; $i <= $item->average_rating ; $i++)
                                             <i class="fa fa-star text-warning"></i>
                                         @endfor
-                                        @for ($j = $item->rating+1; $j <= 5; $j++)
+                                        @for ($j = $item->average_rating+1; $j <= 5; $j++)
                                             <i class="bi bi-star text-secondary"></i>
                                         @endfor
-                                        @if ($item->rating > 0)
-                                            <span class="text-muted"> {{ $item->rating }} Rating</span>
+                                        @if ($item->average_rating > 0)
+                                            <span class="text-muted"> {{ $item->average_rating }} Rating</span>
                                         @else
                                             <span class="text-muted"> 0 Rating</span>
                                         @endif
@@ -72,7 +72,7 @@
                             </div>
                             <div class="card-footer d-flex justify-content-between align-items-center">
                                 <div class="rounded  date ">
-                                    <span class="join">Joined {{ $item->created_at->format('d M Y')}}</span>
+                                    {{-- <span class="join">Joined {{ $item->created_at->format('d M Y')}}</span> --}}
                                 </div>
                                 <div>
                                     <a href="{{ url('send-email-suppliers/'.$item->id)}}" type="button" class="btn btn-outline-secondary "><i class="bi bi-envelope-plus"></i></a>
@@ -80,7 +80,7 @@
                                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal{{ $item->id }}">
                                         <i class="bi bi-person-dash-fill"></i>
                                     </button>
-                                    {{-- Start Modal for deleted supplier --}
+                                    {{-- Start Modal for deleted supplier --}}
                                     <div class="modal fade" id="confirmDeleteModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -102,20 +102,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- End modal for deleted supplier --}
+                                    {{-- End modal for deleted supplier --}}
                                 </div>
                             </div>
                         </div>
                     </div>
+                @endif
                 @endforeach
-            </div> --}}
-        {{--End  Card Suppliers --}}
-        @foreach ($providers as $provider)
-            <div>
-                <h3>{{ $provider->name }}</h3>
-                <p>Average Rating: {{ $provider->average_rating }}</p>
             </div>
-        @endforeach
+        {{--End  Card Suppliers --}}
         @else
             {{-- Start card no suppliers --}}
             <div class="card border-0">
