@@ -33,8 +33,8 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'name_cate'   => 'required|unique:categories,name_cate|max:255',
             'mate_title'  => 'required|max:255',
-            'description' => 'required|max:255',
-            'image'       => 'required|max:255',
+            'description' => 'required|String',
+            'image'       => 'required',
         ]);
 
         $file_name = $this->savePhotos($request->image , 'assets/uploads/category/') ;

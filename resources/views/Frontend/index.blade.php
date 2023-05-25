@@ -58,7 +58,8 @@
 <section style="background-color: #eee;">
     <div class="container py-5">
         <div class="row">
-            @foreach ($top_products as $product_id => $rating)
+            @if (count($top_products) > 0)
+                @foreach ($top_products as $product_id => $rating)
                 @php
                     $products = App\Models\Products::where('id', $product_id)->get();
                 @endphp
@@ -134,6 +135,10 @@
 
                 @endforeach
             @endforeach
+            @else
+                <p>Sorry</p>
+            @endif
+
         </div>
     </div>
 </section>

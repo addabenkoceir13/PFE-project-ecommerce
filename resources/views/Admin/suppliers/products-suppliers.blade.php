@@ -5,7 +5,7 @@
 @section('title-page-cat' , 'Products Suppliers Page')
 
 @section('content')
-    <div class="card">
+    <div class="card border-0">
         <div class="card-body">
             <table class="table">
                 <thead>
@@ -51,6 +51,10 @@
                                 {
                                     $rating_value = 0;
                                 }
+                            }
+                            else
+                            {
+                                $rating_value = 0;
                             }
                             $rating_val = number_format( $rating_value );
                         @endphp

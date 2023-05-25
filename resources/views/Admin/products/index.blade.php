@@ -62,8 +62,8 @@
                             @endif
                             <td>{{ $item->name_prod}}</td>
                             <td>{{ $item->mark_prod}}</td>
-                            <td>{{ $item->original_price}}</td>
-                            <td>{{ $item->selling_price}}</td>
+                            <td>{{ $item->original_price}} DZ</td>
+                            <td>{{ $item->selling_price}} DZ</td>
                             <td>{{ $item->qte_stock}}</td>
                             @php
                                 $storage = json_decode($item->storages, true);

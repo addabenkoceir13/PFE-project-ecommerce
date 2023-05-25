@@ -80,7 +80,7 @@ class RegisterController extends Controller
             'lname'     => ucwords($data['lname']),
             'email'     => $data['email'],
             'password'  => Hash::make($data['password']),
-            'phone'     => $data['phone'],
+            'phone'     => $data['code'].''.$data['phone'],
             'address1'  => ucwords($data['address1']),
             'address2'  => ucwords($data['address2']),
             'city'      => ucwords($data['city']),

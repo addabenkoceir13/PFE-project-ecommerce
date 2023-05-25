@@ -131,20 +131,26 @@
                                     <span class="text-muted">{{ $item->location}}</span>
                                 </div>
                                 <hr class="mt-5 ">
-                                <div class="d-flex ">
+                                <div class="d-flex justify-content-center">
                                     <p>
-                                        @for ($i = 1; $i <= $item->ratings->rating ; $i++)
-                                            <i class="fa fa-star text-warning"></i>
-                                        @endfor
-                                        @for ($j = $item->ratings->rating+1; $j <= 5; $j++)
-                                            <i class="bi bi-star text-secondary"></i>
-                                        @endfor
                                         @if ($item->ratings->rating > 0)
-                                            <span class="text-muted"> {{ $item->ratings->rating }} Rating</span>
+                                            @for ($i = 1; $i <= $item->ratings->rating ; $i++)
+                                                <i class="fa fa-star text-warning"></i>
+                                            @endfor
+                                            @for ($j = $item->ratings->rating+1; $j <= 5; $j++)
+                                                <i class="bi bi-star text-secondary"></i>
+                                            @endfor
+                                            @if ($item->ratings->rating > 0)
+                                                <span class="text-muted"> {{ $item->ratings->rating }} Rating</span>
+                                            @else
+                                                <span class="text-muted"> 0 Rating</span>
+                                            @endif
                                         @else
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <i class="bi bi-star text-secondary"></i>
+                                            @endfor
                                             <span class="text-muted"> 0 Rating</span>
                                         @endif
-
                                     </p>
 
                                 </div>

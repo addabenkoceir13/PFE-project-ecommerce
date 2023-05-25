@@ -14,21 +14,21 @@
                 @csrf
                 <div class="col-md-6">
                     <label class="form-label">Name</label>
-                    <input type="text" class="form-control @error('name_cate') is-invalid @enderror"  name="name_cate" placeholder="Name" required>
+                    <input type="text" class="form-control @error('name_cate') is-invalid @enderror" value="{{ old('name_cate')}}"  name="name_cate" placeholder="Name" required>
                     @error('name_cate')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Mate Title</label>
-                    <input type="text" class="form-control @error('mate_title') is-invalid @enderror"  name="mate_title" placeholder="Mate Title" required>
+                    <input type="text" class="form-control @error('mate_title') is-invalid @enderror"  value="{{ old('mate_title')}}" name="mate_title" placeholder="Mate Title" required>
                     @error('mate_title')
                         <div class="invalid-feedback">Please provide a Mate Title.</div>
                     @enderror
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Description</label>
-                    <textarea name="description" id="validationCustom03" class="form-control @error('description') is-invalid @enderror"  rows="3" required></textarea>
+                    <textarea name="description" id="validationCustom03" class="form-control @error('description') is-invalid @enderror"  rows="3" required> {{ old('description')}}</textarea>
                     @error('description')
                         <div class="invalid-feedback">Please provide a Description.</div>
                     @enderror

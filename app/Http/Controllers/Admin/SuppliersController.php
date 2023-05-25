@@ -11,6 +11,7 @@ use App\Models\Suppliers;
 use App\Notifications\SuppliersEmail;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
@@ -103,6 +104,13 @@ class SuppliersController extends Controller
             $suppliers->address     = ucwords($request->input('address'));
             $suppliers->description = ucfirst($request->input('descrpition'));
             $suppliers->save();
+
+            $ratings = new Rating();
+            $ratings->id_admin  = Auth::id();
+            $ratings->id_supp   = $suppliers->id;
+            $ratings->rating    = 0;
+            $ratings->save();
+
 
 
             // Notification::send($suppliers, new VendorCreated($suppliers));
@@ -202,7 +210,6 @@ class SuppliersController extends Controller
             $suppliers->phone       = $request->input('phone');
             $suppliers->address     = $request->input('address');
             $suppliers->image       = $file_name;
-            $suppliers->rating      = $request->input('supplier_rating');
             $suppliers->description = $request->input('description');
             $suppliers->save();
 

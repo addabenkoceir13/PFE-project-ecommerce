@@ -56,6 +56,7 @@ class FrontConteroller extends Controller
             // Get the top 10 products
             $top_products = array_slice($product_ratings, 0, 9, true);
         }
+        // ['top_products' => $top_products],
         return view('Frontend.index',['top_products' => $top_products], compact('featured_products_phone', 'featured_products_compt'));
     }
 
