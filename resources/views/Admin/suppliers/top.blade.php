@@ -10,7 +10,7 @@
     <div class="card border-0">
         <div class="header-body row">
             <div class="col-md-12 d-flex justify-content-between">
-                <h3>New Suppliers </h3>
+                <h3>The Best Vendors </h3>
             </div>
         </div>
         @if (count($topProviders) > 0 )
