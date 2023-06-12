@@ -21,12 +21,35 @@ $(document).ready(function() {
             }
         });
 
-        var id_product = $(this).closest('.product_date').find('.id_product').val();
-        var qty_product = $(this).closest('.product_date').find('.qty-input').val();
+        var colors    = $('.colors'   ).val();
+        var storages  = $('.storages'   ).val();
+        if (!colors)
+        {
+            color_errur = "You did not choose the color."
+            $('#colorserror').html('');
+            $('#colorserror').html(color_errur);
+
+        } else
+        {
+            color_errur = '';
+            $('#colorserror').html('');
+        }
+        if (!storages)
+        {
+            storage_error = "You did not choose the storage."
+            $('#storageerror').html('');
+            $('#storageerror').html(color_errur);
+        } else
+        {
+            storage_error = '';
+            $('#storageerror').html('');
+        }
 
         var data = {
-            'id_product': $('.id_product').val(),
+            'id_product' : $('.id_product').val(),
             'qty_product': $('.qty-input').val(),
+            'colors'     : $('.colors').val(),
+            'storages'   : $('.storages').val(),
         }
         console.log(data);
 

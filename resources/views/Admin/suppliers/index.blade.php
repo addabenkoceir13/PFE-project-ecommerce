@@ -110,7 +110,7 @@
                                             <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" class="rounded-circle" height="100" width="100" />
                                         </button>
                                     @endif
-                                    <h5 class="name mt-3 font-weight-bold">{{ $item->fname .' '.$item->lname}}</h5>
+                                    <h5 class="name mt-3 font-weight-bold">{{ $item->fname .' '.$item->lname }}</h5>
                                     <span class="mx-2 text-primray">Supplier</span>
                                 </div>
                                 <hr>

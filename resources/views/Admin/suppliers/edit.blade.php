@@ -141,14 +141,14 @@
                     <div class="modal-body">
                         <div class="rating-css">
                             <div class="star-icon">
-                                @if($supplier->rating)
+                                @if($supplier->ratings->rating)
                                     @for ($i = 1; $i <= $supplier->ratings->rating ; $i++)
                                         <input type="radio" value="{{$i}}" name="suppliers_rating" checked id="rating{{$i}}">
                                         <label for="rating{{$i}}" class="fa fa-star"></label>
                                     @endfor
                                     @for ($j = $supplier->ratings->rating+1; $j <= 5; $j++)
                                         <input type="radio" value="{{$j}}" name="suppliers_rating"  id="rating{{$j}}">
-                                        <label for="rating{{$j}}" class="fa bi-star "></label>
+                                        <label for="rating{{$j}}" class="fa fa-star "></label>
                                     @endfor
                                 @else
                                     <input type="radio" value="1" name="suppliers_rating" checked  id="rating1">

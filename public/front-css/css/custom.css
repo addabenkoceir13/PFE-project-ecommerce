@@ -119,7 +119,7 @@ a:hover{
     width: 100%;
     height: 100vh;
 }
- .laptop .col .text-iphone h1{
+.laptop .col .text-iphone h1{
     text-align: center;
     font-size: 58px;
     font-weight: 700;
@@ -137,4 +137,15 @@ a:hover{
     color: #000;
 
 }
+
+/* Start Style CSS radio colors and storaes */
+.checkbox input{
+    display: none;
+}
+.checkbox input:checked + label{
+    border: 2px solid #E2B58A;
+    padding: 1.3px;
+    transform: scale(1.05, 1.05);
+}
+/* end Style CSS radio colors and storaes */
 

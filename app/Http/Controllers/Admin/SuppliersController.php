@@ -103,6 +103,7 @@ class SuppliersController extends Controller
             // $suppliers->image       = $file_name;
             $suppliers->address     = ucwords($request->input('address'));
             $suppliers->description = ucfirst($request->input('descrpition'));
+            $suppliers->rating      = 0;
             $suppliers->save();
 
             $ratings = new Rating();
@@ -248,6 +249,12 @@ class SuppliersController extends Controller
 
             $rating_update->rating  = $request->suppliers_rating;
             $rating_update->update();
+
+            $rating_update_supp = Suppliers::where('id',$request->id_supp)->first();
+
+            $rating_update_supp->rating = $request->suppliers_rating;
+            $rating_update_supp->update();
+
 
             return redirect()->back()->with('status', "Rating update suppliers successfuly");
 

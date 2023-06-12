@@ -46,7 +46,7 @@
             `;
             marker.bindPopup(popupContent);
 
-            // Helper function to generate rating stars
+            // Helper function to generate rating stars  $suppliers->ratings->rating
             function generateRatingStars(rating)
             {
                 var starsHtml = '';

@@ -104,7 +104,7 @@
                                 @endfor
                                 @if ($rating > 0)
                                     @php
-                                        $rating1 = sprintf("%.2f", $rating);
+                                        $rating1 = sprintf("%.1f", $rating);
                                     @endphp
                                     <span class="list-inline-item text-dark">{{ $rating1 }} Rating </span>
                                 @else

@@ -128,9 +128,15 @@
                                 $storage = json_decode($products->storages, true);
                                 $color   = json_decode($products->colors);
                             @endphp
-                            <li class="list-inline-item">
+                            <li class="list-inline-item d-flex justify-content-start">
                                 @foreach ($color as $item)
-                                    <div class="d-inline-block mx-1 border border-secondary" style=" width:25px; height: 20px; background: {{ $item }}; " ></div>
+                                <div class="checkbox">
+                                    <input type="radio" name="color" class="colors" value="{{ $item }}" id="{{ $item }}">
+                                    <label class="mx-1" for="{{ $item }}">
+                                        <div class="  border border-secondary" style=" width:25px; height: 20px; background: {{ $item }}; " ></div>
+                                    </label>
+                                    <div class="alert alert-danger" role="alert"><span id="colorserror"></span></div>
+                                </div>
                                 @endforeach
                                 {{-- <p class="text-muted"><strong>{{ $colors }}</strong></p> --}}
                             </li>
@@ -139,10 +145,16 @@
                             <li class="list-inline-item">
                                 <h6>Avaliable Stokage :</h6>
                             </li>
-                            <li class="list-inline-item">
+                            <li class="list-inline-item d-flex justify-content-start">
                                 @foreach ($storage as $item)
-                                    <div class="d-inline-block mx-1  px-1" style="background: #eee; " >{{ $item }}</div>
+                                    <div class="checkbox">
+                                        <input type="radio" name="storage" class="storages" value="{{ $item }}" id="{{ $item }}">
+                                        <label for="{{ $item }}">
+                                            <div class=" mx-1  px-1" style="background: #eee; " >{{ $item }}</div>
+                                        </label>
+                                    </div>
                                 @endforeach
+                                <div class="alert alert-danger" role="alert"><span id="storageerror"></span></div>
                                 {{-- <p class="text-muted"><strong>{{ $colors }}</strong></p> --}}
                             </li>
                         </ul>
@@ -200,7 +212,7 @@
                     <div class="row align-items-center">
                     <div class="col-auto text-center">
                         @php
-                            $rating_value1 = sprintf("%.2f", $rating_value);
+                            $rating_value1 = sprintf("%.1f", $rating_value);
                         @endphp
                         <h3 class="display-2 fw-bold">{{$rating_value1}}</h3>
                         <i class="fa fa-star me-n1 text-warning"></i>
@@ -318,7 +330,7 @@
                                         class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <h4 class="mb-0">{{ $item->users->name}}</h4>
-                                            <span class="text-muted fs-6">2 hour ago</span>
+                                            <span class="text-muted fs-6">{{ $item->updated_at->format('H:m'); }}</span>
                                         </div>
                                         <div>
                                             <a href="#" data-bs-toggle="tooltip"data-placement="top"title="Report Abuse"><i class="fe fe-flag"></i></a>
