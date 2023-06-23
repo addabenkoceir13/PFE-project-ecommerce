@@ -3,6 +3,17 @@
     --font-family-header: 'Open Sans', sans-serif;
     --font-family-text: 'Ropa Sans', sans-serif;
 }
+.reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+
+}
+.reveal.active {
+    transition: all 3s ease-in-out;
+    transform: translateY(0);
+    opacity: 1;
+}
 
 .bd-page{
     background-color: #fff;
@@ -144,7 +155,7 @@ a:hover{
 }
 .checkbox input:checked + label{
     border: 2px solid #E2B58A;
-    padding: 1.3px;
+    padding: 0px;
     transform: scale(1.05, 1.05);
 }
 /* end Style CSS radio colors and storaes */

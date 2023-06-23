@@ -51,7 +51,7 @@
                                     </div>
                                 @endif
                                 <div class="card-text">
-                                    {{ $prod->description}}
+                                    {{-- {{ $prod->description}} --}}
                                 </div>
                                 <div class="d-flex justify-content-between mt-2">
                                     @php

@@ -21,11 +21,11 @@ $(document).ready(function() {
             }
         });
 
-        var colors    = $('.colors'   ).val();
-        var storages  = $('.storages'   ).val();
+        var colors    = $('.colors').val();
+        var storages  = $('.storages').val();
         if (!colors)
         {
-            color_errur = "You did not choose the color."
+            color_errur = ' <div class="alert alert-danger" role="alert"> You did not choose the color. </div>'
             $('#colorserror').html('');
             $('#colorserror').html(color_errur);
 
@@ -36,7 +36,7 @@ $(document).ready(function() {
         }
         if (!storages)
         {
-            storage_error = "You did not choose the storage."
+            storage_error = ' <div class="alert alert-danger" role="alert"> You did not choose the storage. </div>'
             $('#storageerror').html('');
             $('#storageerror').html(color_errur);
         } else

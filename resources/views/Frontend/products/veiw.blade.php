@@ -135,10 +135,9 @@
                                     <label class="mx-1" for="{{ $item }}">
                                         <div class="  border border-secondary" style=" width:25px; height: 20px; background: {{ $item }}; " ></div>
                                     </label>
-                                    <div class="alert alert-danger" role="alert"><span id="colorserror"></span></div>
                                 </div>
                                 @endforeach
-                                {{-- <p class="text-muted"><strong>{{ $colors }}</strong></p> --}}
+                                <span id="colorserror"></span>
                             </li>
                         </ul>
                         <ul class="list-inline">
@@ -154,8 +153,7 @@
                                         </label>
                                     </div>
                                 @endforeach
-                                <div class="alert alert-danger" role="alert"><span id="storageerror"></span></div>
-                                {{-- <p class="text-muted"><strong>{{ $colors }}</strong></p> --}}
+                                <span id="storageerror"></span>
                             </li>
                         </ul>
                         <h6>Specification:</h6>
@@ -208,7 +206,7 @@
                 <div class="card-body">
                     <!-- Reviews -->
                 <div class="mb-3">
-                    <h3 class="mb-4">How students rated this courses</h3>
+                    <h3 class="mb-4">How clients rated this products</h3>
                     <div class="row align-items-center">
                     <div class="col-auto text-center">
                         @php

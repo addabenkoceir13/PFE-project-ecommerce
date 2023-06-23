@@ -159,9 +159,9 @@ $(document).ready(function()
                     html += '<td> Cateory </td>';
                     html += '<td> Suppliers </td>';
                     html += '<td>' + product.name_prod + '</td>';
-                    html += '<td>' + product.mark_prod + '</td>';
+                    // html += '<td>' + product.mark_prod + '</td>';
                     html += '<td>' + product.original_price + '</td>';
-                    html += '<td>' + product.selling_price + '</td>';
+                    // html += '<td>' + product.selling_price + '</td>';
                     html += '<td>' + product.qte_stock + '</td>';
                     html += '<td>' + storage + '</td>';
                     html += '<td>' + color + '</td>';

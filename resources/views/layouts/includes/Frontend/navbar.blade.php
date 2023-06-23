@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark  bg-dark">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light  bg-light">
     <div class="container-fluid">
     <a class="navbar-brand" href="{{ url('/')}}">TechShop</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,8 +33,8 @@
             <form action="{{ url('searchproduct')}}" method="POST">
                 @csrf
                 <div class="input-group ">
-                    <input class="form-control border border-secondary bg-dark text-white" name="name_prod" type="search"  placeholder="Search Products" id="search_product" required>
-                    <button class="btn btn-outline-secondary bg-dark border-start-0  border border-secondary ms-n5" type="submit">
+                    <input class="form-control border border-secondary bg-light text-white" name="name_prod" type="search"  placeholder="Search Products" id="search_product" required>
+                    <button class="btn btn-outline-secondary bg-light border-start-0  border border-secondary ms-n5" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>

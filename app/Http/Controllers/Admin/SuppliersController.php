@@ -298,6 +298,7 @@ class SuppliersController extends Controller
             'message' => $message
         ];
 
+
         Mail::to($email)->send(new ContactMail($data));
 
         return redirect()->back()->with("status" , "Email Sent Successfull");

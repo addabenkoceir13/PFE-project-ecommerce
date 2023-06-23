@@ -34,9 +34,9 @@
                         <th scope="col">Category</th>
                         <th scope="col">Suppliers</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Mark  Product</th>
+                        {{-- <th scope="col">Mark  Product</th> --}}
                         <th scope="col">Original Price</th>
-                        <th scope="col">Selling  Price</th>
+                        {{-- <th scope="col">Selling  Price</th> --}}
                         <th scope="col">Quantity</th>
                         <th scope="col">Storages</th>
                         <th scope="col">Colors</th>
@@ -61,9 +61,9 @@
                                 <td>No Suppliers</td>
                             @endif
                             <td>{{ $item->name_prod}}</td>
-                            <td>{{ $item->mark_prod}}</td>
+                            {{-- <td>{{ $item->mark_prod}}</td> --}}
                             <td>{{ $item->original_price}} DZ</td>
-                            <td>{{ $item->selling_price}} DZ</td>
+                            {{-- <td>{{ $item->selling_price}} DZ</td> --}}
                             <td>{{ $item->qte_stock}}</td>
                             @php
                                 $storage = json_decode($item->storages, true);
