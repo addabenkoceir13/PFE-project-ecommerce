@@ -7,49 +7,50 @@ Techshop dz is an online store that sells phones and laptops. The website provid
 ## Screenshots
 ### Page Sign Up
 
-![sign-up-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/214c2cc3-2be2-4b6c-a463-a03922f55a3f)
+![sign-up-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/82db7eb3-2856-4695-a006-eeeae77417c7)
 
 ### Page Log In 
 
-![login-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/58b4f072-ab19-4496-8cd2-504e22e9912d)
+![login-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/9086bdc5-c599-4b14-a89b-daef28130d0e)
 
 ### Page Home 
 
-![home-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/bd7aa076-c1f5-4368-9dca-9e650461ec94)
+![home-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/9c1eba7c-9739-4de4-8958-90d769696c47)
 
 ### Page Category
 
-![category-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/c7074ba7-7279-423e-8812-3da1a1778537)
+![category-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/de865481-3090-4d80-8dad-8be094ea6bfc)
 
 ### Page Products
 
-![screencapture-127-0-0-1-8000-view-category-Phones-2023-07-12-16_27_11](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/4efb2aec-d82d-4d99-b9ac-e0873eadb024)
+![screencapture-127-0-0-1-8000-view-category-Phones-2023-07-12-16_27_11](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/b977ef7f-6c36-46d4-99ed-20318289f402)
 
 ### Page product view 
 
-![view-products2-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/223ccb47-cf86-4200-beba-076c6a2597d8)
+![view-products2-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/9d30b709-d2fb-47ca-8963-b56b298a9327)
 
-![view-products-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/2e6052d8-a88f-4dcc-b2e7-1e4719230027)
+![view-products-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/9dae53b5-8c74-4c3b-a63d-5702e2d7fee5)
 
 ### Page cart 
 
-![cart-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/2e143bc0-dbe5-4f51-8f2a-bfdee1ac7a35)
+![cart-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/8066cafc-b02c-42f9-a3f0-dba7a45eb443)
 
 ### Page wishlist
 
-![screencapture-127-0-0-1-8000-wishlist-2023-07-12-16_30_58](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/d594ed50-c206-447e-b094-5c2703b4da13)
+![wishlist-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/40eaded8-f1eb-4122-9d6f-cd0884a91bd4)
 
 ### Page Shoping cart
 
-![shoping-cart-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/dc678e42-e039-43d0-898c-e4dc738b7377)
+![shoping-cart-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/1f25facf-c019-4005-b403-4de33d53c111)
 
 ### Page Orders 
 
-![screencapture-127-0-0-1-8000-my-orders-2023-07-12-16_35_36](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/592e8b40-8879-46fd-834e-a64207523e0c)
+![my-orders-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/1b01cca5-c870-40d6-b9d8-4d7fefa42a4d)
 
 ### Page Profile
 
-![screencapture-127-0-0-1-8000-my-profile-2023-07-12-16_36_23](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/cd205eb5-42e1-43a1-a8c1-70600c2eff0a)
+![screencapture-127-0-0-1-8000-my-profile-2023-07-12-16_36_23](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/070befae-686f-4712-a2d9-c0ad0114ac27)
+
 
 # Admin
 ### Page Dashbord
