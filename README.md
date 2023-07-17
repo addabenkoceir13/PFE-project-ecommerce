@@ -55,26 +55,26 @@ Techshop dz is an online store that sells phones and laptops. The website provid
 # Admin
 ### Page Dashbord
 
-![screencapture-127-0-0-1-8000-dashboard-2023-07-12-16_41_35](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/2cc0ec4b-19c3-40e4-8c25-7cfb9ab169a2)
+![admin-dashboard-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/f581deaa-eb3f-48cd-9597-75fc2a84dc21)
 
 ### Page Categorys 
 
-![screencapture-127-0-0-1-8000-category-2023-07-12-16_43_30](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/d96eed55-db7d-4541-9bec-43b921ff264f)
+![admin-categore-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/ae60c471-25a0-46c7-aa19-e6c67b32a827)
+
 
 ### Page  Products 
 
-![image](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/4a1568f0-1d16-4938-b962-6229a96769e5)
+![admin-products-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/462a0684-7844-41e6-8d8b-50f972e9f4d4)
+
 
 ### Page Orders 
 
-![screencapture-127-0-0-1-8000-orders-2023-07-12-16_45_30](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/4cdde379-ba2f-4953-b6a0-e1b557f0489a)
+![admin-history-order-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/5586dd26-ce63-4883-818c-940ccaea4904)
 
-### Page Products suppliers
-
-![screencapture-127-0-0-1-8000-products-suplliers-2023-07-12-16_45_47](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/f3606f99-ee72-4883-a841-e2dca5f60b5c)
 
 ### Page Map Suppliers 
 
-![screencapture-127-0-0-1-8000-map-2023-07-12-16_46_03](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/4a2791e4-ca7e-4dd2-ae5b-5013dc86ae4d)
+![admin-map-page](https://github.com/addabenkoceir13/PFE-project-ecommerce/assets/64089992/f08a2ea4-1923-46b8-9a56-3f1f78254ffd)
+
 
 
