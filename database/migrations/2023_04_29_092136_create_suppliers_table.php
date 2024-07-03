@@ -27,6 +27,7 @@ class CreateSuppliersTable extends Migration
             $table->string("location");
             $table->integer("rating");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

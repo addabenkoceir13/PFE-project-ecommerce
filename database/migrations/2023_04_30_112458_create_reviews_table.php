@@ -19,6 +19,7 @@ class CreateReviewsTable extends Migration
             $table->bigInteger('id_prod');
             $table->mediumText('user_review');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

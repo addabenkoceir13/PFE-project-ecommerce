@@ -33,6 +33,7 @@ class CreateOrderTable extends Migration
             $table->string('mode_payment');
             $table->string('id_payment')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

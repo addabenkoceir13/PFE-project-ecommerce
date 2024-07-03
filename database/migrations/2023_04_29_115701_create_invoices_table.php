@@ -21,6 +21,7 @@ class CreateInvoicesTable extends Migration
             $table->bigInteger('total_price');
             $table->string('num_invoice');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

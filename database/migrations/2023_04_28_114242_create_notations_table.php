@@ -19,6 +19,7 @@ class CreateNotationsTable extends Migration
             $table->bigInteger('id_prod');
             $table->string('stars_rated');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

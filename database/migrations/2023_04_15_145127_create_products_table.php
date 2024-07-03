@@ -30,6 +30,7 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->longText('small_descripton');
             $table->timestamps();
+            $table->softDeletes();
 
         });
     }

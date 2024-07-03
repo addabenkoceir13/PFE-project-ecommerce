@@ -19,6 +19,7 @@ class CreateRatingsTable extends Migration
             $table->tinyInteger("id_supp");
             $table->string("rating");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

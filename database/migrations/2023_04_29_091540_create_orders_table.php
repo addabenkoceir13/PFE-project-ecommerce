@@ -20,8 +20,8 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('qty_prod');
             $table->tinyInteger('status')->default('0');
             $table->string('tracking_no');
-
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
