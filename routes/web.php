@@ -7,10 +7,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\FrontConteroller;
 use App\Http\Controllers\Frontend\CommandeController;
-use App\Http\Controller\Frontend\CkeckoutController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ContectController;
-use App\Http\Controllers\Admin\FrontController;
 use App\Http\Controllers\Admin\MapController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\SuppliersController;
@@ -21,10 +19,6 @@ use App\Http\Controllers\Frontend\WishlistContrller;
 use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\RecommendationController;
 use App\Http\Controllers\Frontend\ReviewContoller;
-use App\Mail\ContactMail;
-use App\Mail\WelcomeMail;
-use App\Models\Suppliers;
-use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,10 +30,6 @@ use Illuminate\Support\Facades\Mail;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 

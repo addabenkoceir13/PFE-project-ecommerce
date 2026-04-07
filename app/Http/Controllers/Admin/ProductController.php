@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\UploadPhotos;
 use App\Models\Category;
 use App\Models\Products;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Traits\UploadPhotos;
-use App\Models\Products_part;
 use App\Models\Suppliers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller

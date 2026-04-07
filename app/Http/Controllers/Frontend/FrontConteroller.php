@@ -4,14 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Evaluation;
-use App\Models\Invoices;
 use App\Models\Notation;
-use App\Models\Order;
 use App\Models\Products;
 use App\Models\Review;
 use App\Models\User;
-use App\Services\CollaborativeFilteringService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +18,7 @@ class FrontConteroller extends Controller
     {
         $featured_products_phone = Products::where('id_cate','1')->get();
         $featured_products_compt = Products::where('id_cate','2')->get();
+        $top_products = [];
 
         $users = Notation::all();
         $user_ids = DB::table('notations')->distinct()->pluck('id_user')->toArray();

@@ -18,13 +18,13 @@ class CreateProductsTable extends Migration
             $table->bigInteger('id_cate');
             $table->bigInteger('id_supp');
             $table->string('name_prod');
-            $table->string('marque_prod');
+            $table->string('mark_prod');
             $table->float('original_price');
             $table->float('selling_price');
             $table->bigInteger('qte_stock');
-            $table->float('tax');
-            $table->text('color');
-            $table->text('storage');
+            $table->float('tax')->nullable();
+            $table->text('colors')->nullable();
+            $table->text('storages')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->string('image');
             $table->longText('description');

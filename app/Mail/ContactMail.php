@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -32,7 +31,9 @@ class ContactMail extends Mailable
     {
         return $this->from('contant@techshop.dz')
                     ->subject($this->data["subject"])
-                    ->with('data', $this->data)
-                    ->view('emails.email-suppliers');
+                    ->view('emails.email-suppliers')
+                    ->with([
+                        'data' => $this->data,
+                    ]);
     }
 }

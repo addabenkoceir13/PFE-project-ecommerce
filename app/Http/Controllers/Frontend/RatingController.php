@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Evaluation;
 use App\Models\Notation;
 use App\Models\Order;
 use App\Models\Products;
